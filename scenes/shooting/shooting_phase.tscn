@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://djea8d8grktc3"]
+
+[ext_resource type="Script" uid="uid://bfepfxjr5fjq7" path="res://scenes/shooting/shooting_phase.gd" id="1_3kdxj"]
+[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_ingh5"]
+[ext_resource type="Script" uid="uid://umk1303yffvv" path="res://scenes/shooting/target_area.gd" id="2_3kdxj"]
+[ext_resource type="PackedScene" uid="uid://qvfrpgb15r2x" path="res://scenes/shooting/weapons/gun.tscn" id="4_d8do8"]
+
+[sub_resource type="GDScript" id="GDScript_d8do8"]
+script/source = "extends Sprite2D
+
+var target_max_health = 20
+var target_cur_health = 20
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pebvm"]
+size = Vector2(129, 130)
+
+[node name="Shooting Phase" type="Node2D"]
+script = ExtResource("1_3kdxj")
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(786, 439)
+texture = ExtResource("1_ingh5")
+script = SubResource("GDScript_d8do8")
+
+[node name="Target Area" type="Area2D" parent="Target"]
+script = ExtResource("2_3kdxj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Target Area"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_pebvm")
+
+[node name="DPS Label" type="Label" parent="."]
+offset_left = 330.0
+offset_top = 221.0
+offset_right = 705.0
+offset_bottom = 300.0
+text = "You have done damage."
+
+[node name="Gun" parent="." instance=ExtResource("4_d8do8")]
+
+[connection signal="target_shot" from="Target/Target Area" to="." method="_on_target_area_target_shot"]
