@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ces2ubtduaguy"]
+[gd_scene format=3 uid="uid://ces2ubtduaguy"]
 
 [ext_resource type="PackedScene" uid="uid://djea8d8grktc3" path="res://scenes/shooting/shooting_phase.tscn" id="1_uwrxv"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1672194163]
 
-[node name="Shooting Phase" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Shooting Phase" parent="." unique_id=1924229214 instance=ExtResource("1_uwrxv")]
