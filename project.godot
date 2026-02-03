@@ -15,9 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Fish In A Barrel"
-run/main_scene="uid://ces2ubtduaguy"
+run/main_scene="uid://3wvgqfduwqwm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameController="*uid://cf3oq2s84dj7"
 
 [input]
 

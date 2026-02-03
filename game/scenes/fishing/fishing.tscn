@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://nv47b8t8jyrt"]
 
-[ext_resource type="Script" uid="uid://c4btywvs0dplv" path="res://scenes/fishing/fishing.gd" id="1_1mg86"]
+[ext_resource type="Script" uid="uid://c4btywvs0dplv" path="res://game/scenes/fishing/fishing.gd" id="1_1mg86"]
 [ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_nodve"]
-[ext_resource type="Script" uid="uid://cnm0q0r3nbl0x" path="res://scenes/fishing/create_fish_button.gd" id="2_lnkfm"]
-[ext_resource type="Script" uid="uid://ch3grr7rerk33" path="res://scenes/fishing/fish.gd" id="3_lnkfm"]
+[ext_resource type="Script" uid="uid://cnm0q0r3nbl0x" path="res://game/scenes/fishing/create_fish_button.gd" id="2_lnkfm"]
+[ext_resource type="Script" uid="uid://ch3grr7rerk33" path="res://game/scenes/fishing/fish.gd" id="3_lnkfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nodve"]
 size = Vector2(129.83382, 130.39255)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i263x"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7eig"]
+font_size = 45
 
 [node name="Fishing" type="Node2D" unique_id=1920484293]
 script = ExtResource("1_1mg86")
@@ -26,3 +32,19 @@ shape = SubResource("RectangleShape2D_nodve")
 
 [node name="Fish" type="Node2D" parent="." unique_id=1031524142]
 script = ExtResource("3_lnkfm")
+
+[node name="Bait Count" type="Label" parent="." unique_id=1535396836]
+offset_left = 8.0
+offset_top = 560.0
+offset_right = 303.0
+offset_bottom = 648.0
+text = "Total Bait"
+label_settings = SubResource("LabelSettings_i263x")
+
+[node name="Total Weight" type="Label" parent="." unique_id=465480026]
+offset_left = 992.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 71.0
+text = "Weight"
+label_settings = SubResource("LabelSettings_n7eig")

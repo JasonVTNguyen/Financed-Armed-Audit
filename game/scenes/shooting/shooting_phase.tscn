@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://djea8d8grktc3"]
 
-[ext_resource type="Script" uid="uid://bfepfxjr5fjq7" path="res://scenes/shooting/shooting_phase.gd" id="1_3kdxj"]
+[ext_resource type="Script" uid="uid://bfepfxjr5fjq7" path="res://game/scenes/shooting/shooting_phase.gd" id="1_3kdxj"]
 [ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_ingh5"]
-[ext_resource type="Script" uid="uid://umk1303yffvv" path="res://scenes/shooting/target_area.gd" id="2_3kdxj"]
-[ext_resource type="Script" uid="uid://cx1mlkk7mn2a5" path="res://scenes/shooting/target.gd" id="3_pebvm"]
-[ext_resource type="PackedScene" uid="uid://qvfrpgb15r2x" path="res://scenes/shooting/weapons/gun.tscn" id="4_d8do8"]
+[ext_resource type="Script" uid="uid://umk1303yffvv" path="res://game/scenes/shooting/target_area.gd" id="2_3kdxj"]
+[ext_resource type="Script" uid="uid://cx1mlkk7mn2a5" path="res://game/scenes/shooting/target.gd" id="3_pebvm"]
+[ext_resource type="PackedScene" uid="uid://qvfrpgb15r2x" path="res://game/scenes/shooting/weapons/gun.tscn" id="4_d8do8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pebvm"]
 size = Vector2(129, 130)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pebvm"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_pk8i0"]
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4wif6"]
 
 [node name="Shooting Phase" type="Node2D" unique_id=2124557051 groups=["Gun"]]
 script = ExtResource("1_3kdxj")
@@ -51,4 +58,18 @@ offset_top = 580.0
 offset_right = 1155.0
 offset_bottom = 646.0
 text = "Ammo Count"
+label_settings = SubResource("LabelSettings_pk8i0")
+
+[node name="Fish Name" type="Label" parent="." unique_id=56863486]
+offset_top = 52.0
+offset_right = 1152.0
+offset_bottom = 87.0
+label_settings = SubResource("LabelSettings_4wif6")
 horizontal_alignment = 1
+
+[node name="Weapon Name" type="Label" parent="." unique_id=1457533049]
+offset_left = 960.0
+offset_top = 544.0
+offset_right = 1043.0
+offset_bottom = 567.0
+text = "Gun Name"

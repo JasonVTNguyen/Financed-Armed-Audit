@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://gl78j0u3uh6h"]
+
+[ext_resource type="Script" uid="uid://dr5ykvpx7yvvd" path="res://game/scenes/shopping/inventory.gd" id="1_sn45h"]
+
+[node name="Shopping Menu" type="Control" unique_id=68397610]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="Node" parent="." unique_id=1743700848]
+script = ExtResource("1_sn45h")
