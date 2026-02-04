@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://clnogdppnhjec"]
+
+[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_nf6vl"]
+[ext_resource type="Script" uid="uid://ch3grr7rerk33" path="res://game/scenes/fishing/fish.gd" id="2_c75su"]
+[ext_resource type="Script" uid="uid://cnm0q0r3nbl0x" path="res://game/scenes/fishing/create_fish_button.gd" id="3_c75su"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i263x"]
+size = Vector2(128, 128)
+
+[node name="Fish" type="Sprite2D" unique_id=1942758568]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("1_nf6vl")
+script = ExtResource("2_c75su")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=318609521]
+script = ExtResource("3_c75su")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=728189849]
+shape = SubResource("RectangleShape2D_i263x")

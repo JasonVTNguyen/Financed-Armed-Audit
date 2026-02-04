@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://gl78j0u3uh6h"]
 
+[ext_resource type="Script" uid="uid://83iqaojexvhg" path="res://game/scenes/shopping/shopping_menu.gd" id="1_bl3e4"]
 [ext_resource type="Script" uid="uid://dr5ykvpx7yvvd" path="res://game/scenes/shopping/inventory.gd" id="1_sn45h"]
 
 [node name="Shopping Menu" type="Control" unique_id=68397610]
@@ -9,6 +10,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bl3e4")
 
 [node name="Inventory" type="Node" parent="." unique_id=1743700848]
 script = ExtResource("1_sn45h")
+
+[node name="Label" type="Label" parent="." unique_id=2052194999]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 32.0
+offset_right = 664.0
+offset_bottom = 55.0
+text = "Welcome to the Shop"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=697041299]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 128.0
+offset_right = 736.0
+offset_bottom = 176.0
+text = "Back to Fishing"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

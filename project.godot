@@ -23,6 +23,10 @@ config/icon="res://icon.svg"
 
 GameController="*uid://cf3oq2s84dj7"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 Shoot={

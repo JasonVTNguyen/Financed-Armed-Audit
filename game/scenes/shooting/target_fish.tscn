@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cnax1gwgf4prw"]
+
+[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_fu23n"]
+[ext_resource type="Script" uid="uid://w7dlbwv42lvy" path="res://game/scenes/shooting/target_fish.gd" id="1_sglp5"]
+[ext_resource type="Script" uid="uid://cx1mlkk7mn2a5" path="res://game/scenes/shooting/target.gd" id="2_ifw05"]
+[ext_resource type="Script" uid="uid://umk1303yffvv" path="res://game/scenes/shooting/target_area.gd" id="3_tlfpi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pebvm"]
+size = Vector2(129, 130)
+
+[node name="Target Fish" type="RigidBody2D" unique_id=1369185684]
+script = ExtResource("1_sglp5")
+
+[node name="Target" type="Sprite2D" parent="." unique_id=1878476448]
+texture = ExtResource("1_fu23n")
+script = ExtResource("2_ifw05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=372397662]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_pebvm")
+
+[node name="Target Area" type="Area2D" parent="." unique_id=1890229210 groups=["Gun"]]
+script = ExtResource("3_tlfpi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Target Area" unique_id=1711654583]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_pebvm")

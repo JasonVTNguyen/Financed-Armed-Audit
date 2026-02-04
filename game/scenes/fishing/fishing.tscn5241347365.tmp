@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://c4btywvs0dplv" path="res://game/scenes/fishing/fishing.gd" id="1_1mg86"]
 [ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_nodve"]
 [ext_resource type="Script" uid="uid://cnm0q0r3nbl0x" path="res://game/scenes/fishing/create_fish_button.gd" id="2_lnkfm"]
-[ext_resource type="PackedScene" uid="uid://clnogdppnhjec" path="res://game/scenes/fishing/fish.tscn" id="5_f6nhs"]
+[ext_resource type="Script" uid="uid://ch3grr7rerk33" path="res://game/scenes/fishing/fish.gd" id="3_lnkfm"]
 [ext_resource type="Texture2D" uid="uid://bsigi13tsl8o6" path="res://game/bg/lakebg.png" id="5_n7eig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nodve"]
 size = Vector2(129.83382, 130.39255)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i263x"]
+size = Vector2(128, 128)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i263x"]
 font_size = 64
@@ -27,7 +30,6 @@ texture = ExtResource("5_n7eig")
 metadata/_edit_lock_ = true
 
 [node name="Create Fish Button" type="Sprite2D" parent="." unique_id=735912819]
-visible = false
 position = Vector2(1016, 616)
 scale = Vector2(1.903, 0.292)
 texture = ExtResource("1_nodve")
@@ -40,8 +42,16 @@ position = Vector2(0, 0.59802246)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_nodve")
 
-[node name="Fish" parent="." unique_id=1942758568 instance=ExtResource("5_f6nhs")]
+[node name="Fish" type="Sprite2D" parent="." unique_id=323105432]
 position = Vector2(-16, -48)
+scale = Vector2(0.75, 0.25)
+texture = ExtResource("1_nodve")
+script = ExtResource("3_lnkfm")
+
+[node name="Area2D" type="Area2D" parent="Fish" unique_id=1210009732]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fish/Area2D" unique_id=1938471609]
+shape = SubResource("RectangleShape2D_i263x")
 
 [node name="Bait Count" type="Label" parent="." unique_id=1535396836]
 offset_left = 8.0
