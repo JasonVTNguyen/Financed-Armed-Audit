@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qvfrpgb15r2x" path="res://game/scenes/shooting/weapons/gun.tscn" id="4_d8do8"]
 [ext_resource type="PackedScene" uid="uid://djkstre63q2jj" path="res://game/modifier_handler/modifier_handler.tscn" id="5_pk8i0"]
 [ext_resource type="PackedScene" uid="uid://bsj0x6omnlkpw" path="res://game/modifier_handler/modifier.tscn" id="6_q4mg4"]
-[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="7_q4mg4"]
+[ext_resource type="Texture2D" uid="uid://b02klkb2g1r8h" path="res://game/sprites/particle.png" id="7_q4mg4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wif6"]
 bg_color = Color(0.9999997, 0.16517359, 0.1934779, 1)
@@ -186,7 +186,7 @@ emission_ring_radius = 50.0
 gravity = Vector2(0, 0)
 radial_accel_min = 75.0
 radial_accel_max = 75.0
-scale_amount_min = 0.25
-scale_amount_max = 0.25
+scale_amount_min = 0.1
+scale_amount_max = 0.1
 
 [connection signal="area_entered" from="Boundaries/Boundary Areas" to="Target Fish" method="_on_boundary_areas_area_entered"]

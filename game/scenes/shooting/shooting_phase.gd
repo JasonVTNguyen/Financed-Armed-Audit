@@ -33,6 +33,8 @@ func _ready() -> void:
 	current_gun = GameController.primary_gun
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	apply_hook_damage()
+	if new_target.target_cur_health <= 0:
+		target_dead()
 	update_labels()
 	
 	#GameController.primary_gun.append_to_gun_upgrades(Catalogue.weapon_upgrades.get(0))
@@ -77,20 +79,14 @@ func _input(event: InputEvent) -> void:
 
 func target_dead():
 	GameController.money += GameController.currentFish.value
+	GameController.rounds_fish_caught.append(GameController.currentFish)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if GameController.current_bait > 0:
 		get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")
 	else:
-		print("Total Value: " + str(GameController.total_value))
+		print("Total Value: " + str(GameController.money))
 		print("Round Goal: " + str(GameController.story_round_objectives.get(GameController.current_round)))
-		if GameController.money >= GameController.story_round_objectives.get(GameController.current_round):
-			print("Value Exceeded.")
-			GameController.money -= GameController.story_round_objectives.get(GameController.current_round)
-			GameController.current_round += 1
-			get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
-		else:
-			print("Game Over")
-			get_tree().change_scene_to_file("res://game/scenes/mainmenu/main_menu.tscn")
+		get_tree().change_scene_to_file("res://game/scenes/results/results_screen.tscn")
 			
 func damage_calculation():
 	#print("Damage Dealt")

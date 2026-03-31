@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dkj5ety8nsieu"]
+
+[ext_resource type="Script" uid="uid://bwkdgv0qsvq5c" path="res://game/scenes/results/caught_fish.gd" id="1_lwde1"]
+
+[node name="Caught Fish" type="AspectRatioContainer" unique_id=1918773970]
+offset_right = 597.0
+offset_bottom = 23.0
+stretch_mode = 3
+script = ExtResource("1_lwde1")
+
+[node name="Fish Name" type="Label" parent="." unique_id=1667245818]
+layout_mode = 2
+text = "Fish"
+
+[node name="Fish Value" type="Label" parent="." unique_id=1490957705]
+layout_mode = 2
+text = "Value"
+horizontal_alignment = 2

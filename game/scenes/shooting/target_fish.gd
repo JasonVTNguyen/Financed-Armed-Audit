@@ -38,15 +38,6 @@ func _on_boundary_areas_area_entered(area: Area2D) -> void:
 	if GameController.current_bait >= 1:
 		get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")
 	else:
-		print("Total Value: " + str(GameController.total_value))
+		print("Total Value: " + str(GameController.money))
 		print("Round Goal: " + str(GameController.story_round_objectives.get(GameController.current_round)))
-		if GameController.total_value >= GameController.story_round_objectives.get(GameController.current_round):
-			print("Value Exceeded.")
-			GameController.money += GameController.total_value
-			GameController.total_value = 0.0
-			GameController.current_round += 1
-			get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
-		else:
-			print("Game Over")
-			get_tree().change_scene_to_file("res://game/scenes/mainmenu/main_menu.tscn")
-			
+		get_tree().change_scene_to_file("res://game/scenes/results/results_screen.tscn")

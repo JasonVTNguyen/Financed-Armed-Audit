@@ -63,6 +63,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Primary Gun"
 
+[node name="Primary Ammo" type="Label" parent="Panel/Primary Weapon Box/VBoxContainer" unique_id=846864255]
+layout_mode = 2
+
 [node name="Secondary Weapon Box" type="PanelContainer" parent="Panel" unique_id=915958512]
 layout_mode = 0
 offset_left = 464.0
@@ -71,7 +74,13 @@ offset_right = 672.0
 offset_bottom = 192.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3qhed")
 
-[node name="Secondary Gun" type="Label" parent="Panel/Secondary Weapon Box" unique_id=103242671]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Secondary Weapon Box" unique_id=1157901091]
+layout_mode = 2
+
+[node name="Secondary Gun" type="Label" parent="Panel/Secondary Weapon Box/VBoxContainer" unique_id=103242671]
+layout_mode = 2
+
+[node name="Secondary Ammo" type="Label" parent="Panel/Secondary Weapon Box/VBoxContainer" unique_id=998843446]
 layout_mode = 2
 
 [node name="Close Inventory Button" type="Button" parent="." unique_id=2104197141]
@@ -84,10 +93,10 @@ text = "Close"
 
 [node name="Gun Description" type="Label" parent="." unique_id=462549250]
 layout_mode = 0
-offset_left = 704.0
-offset_top = 400.0
-offset_right = 912.0
-offset_bottom = 456.0
+offset_left = 237.0
+offset_top = 325.0
+offset_right = 911.0
+offset_bottom = 413.0
 label_settings = SubResource("LabelSettings_jfhyk")
 
 [connection signal="mouse_entered" from="Panel/Primary Weapon Box" to="." method="_on_primary_weapon_box_mouse_entered"]

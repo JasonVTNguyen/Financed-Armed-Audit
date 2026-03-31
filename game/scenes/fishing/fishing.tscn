@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c4btywvs0dplv" path="res://game/scenes/fishing/fishing.gd" id="1_1mg86"]
 [ext_resource type="PackedScene" uid="uid://cu6abksrs4xpo" path="res://game/scenes/fishing/bobber.tscn" id="4_n7eig"]
+[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="5_f6nhs"]
 [ext_resource type="Texture2D" uid="uid://bsigi13tsl8o6" path="res://game/bg/lakebg.png" id="5_n7eig"]
 [ext_resource type="Script" uid="uid://7k0ss52vhvmq" path="res://game/scenes/fishing/fish_dictionary.gd" id="7_j3aex"]
 
@@ -96,6 +97,8 @@ offset_right = 666.0
 offset_bottom = 642.0
 text = "Skip to Shop"
 
-[connection signal="mouse_entered" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_entered"]
-[connection signal="mouse_exited" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_exited"]
+[node name="Test Fish Target" type="Sprite2D" parent="." unique_id=448097304]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_f6nhs")
+
 [connection signal="pressed" from="Skip to Shop Button" to="." method="_on_skip_to_shop_button_pressed"]

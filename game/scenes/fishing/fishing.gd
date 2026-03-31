@@ -39,7 +39,8 @@ func randomize_fish(new_fish : Fish) -> void:
 	new_fish.health = random_fish.health
 	new_fish.img = random_fish.img
 	new_fish.lore = random_fish.lore
-
+	new_fish.fish_size = random_fish.fish_size
+	
 func makeFish(fish):
 	if bobber_state == BobberState.SET and not is_qte:
 		#print("Making Fish")
@@ -60,12 +61,3 @@ func unset_bobber() -> void:
 
 func _on_skip_to_shop_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
-
-func _on_lake_boundaries_mouse_entered() -> void:
-	print("Out")
-	GameController.mouse_state = GameController.MouseState.OUTSIDE
-		
-
-func _on_lake_boundaries_mouse_exited() -> void:
-	print("In")
-	GameController.mouse_state = GameController.MouseState.IN

@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://bkg128qxjnkw6" path="res://game/scenes/shopping/blacksmith.gd" id="1_eekjm"]
 [ext_resource type="Texture2D" uid="uid://c4s4g28m08jb" path="res://game/bg/blacksmithbg.png" id="2_2h1f7"]
 [ext_resource type="PackedScene" uid="uid://deiqhg82uiynn" path="res://game/scenes/shopping/replace_weapon_panel.tscn" id="3_2h1f7"]
+[ext_resource type="LabelSettings" uid="uid://dwpk2dd5sqyyp" path="res://game/scenes/gui/Style Settings/ShopDescriptors.tres" id="3_4wbwc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2h1f7"]
 font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_76fyy"]
+[sub_resource type="LabelSettings" id="LabelSettings_4wbwc"]
+font_size = 12
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -57,15 +59,30 @@ offset_right = 1144.0
 offset_bottom = 64.0
 text = "Money"
 label_settings = SubResource("LabelSettings_2h1f7")
+horizontal_alignment = 2
 
-[node name="Description Text" type="Label" parent="." unique_id=933545156]
+[node name="Panel" type="Panel" parent="." unique_id=1281234219]
 layout_mode = 0
 offset_left = 440.0
 offset_top = 8.0
-offset_right = 840.0
-offset_bottom = 176.0
+offset_right = 838.0
+offset_bottom = 130.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2131460250]
+layout_mode = 0
+offset_right = 397.0
+offset_bottom = 50.0
+
+[node name="Description Name" type="Label" parent="Panel/VBoxContainer" unique_id=1010030188]
+layout_mode = 2
+text = "Name"
+label_settings = ExtResource("3_4wbwc")
+
+[node name="Description Text" type="Label" parent="Panel/VBoxContainer" unique_id=933545156]
+layout_mode = 2
 text = "Description"
-label_settings = SubResource("LabelSettings_76fyy")
+label_settings = SubResource("LabelSettings_4wbwc")
+autowrap_mode = 2
 
 [node name="Replace Weapon Panel" parent="." unique_id=965525752 instance=ExtResource("3_2h1f7")]
 visible = false

@@ -16,15 +16,19 @@ var health : float
 var img : String
 var lore : String
 
+var fish_size : String
+
 var move_distance : float = 0.0
 var move_angle : float = 0.0
 
-var target_destination : Vector2 = self.position
+@export var target_destination : Vector2 = self.position
 
 enum State { WANDER, ATTRACT, STOP }
 var state : State = State.WANDER
 
 @export var agent : NavigationAgent2D
+
+signal changed
 
 func _init(c_fish_name : String = "Test Fish", c_value : float = 250.0, c_health : float = 125.0, c_img : String = "res://icon.svg", c_lore : String = "This is a test fish", c_size : String = "Medium") -> void:
 	fish_name = c_fish_name
@@ -32,16 +36,11 @@ func _init(c_fish_name : String = "Test Fish", c_value : float = 250.0, c_health
 	health = c_health
 	img = c_img
 	lore = c_lore
-	match c_size:
-		"Small":
-			self.scale *= Vector2(0.75,0.75)
-		"Medium":
-			self.scale *= Vector2(1.2,1.2)
-		"Large":
-			self.scale *= Vector2(2,2)
+	fish_size = c_size
 	self.position = Vector2(r_x, r_y)
 
 func _ready() -> void:
+	self.change_size()
 	set_new_target_destination()
 
 func _physics_process(delta: float) -> void:
@@ -75,18 +74,24 @@ func _to_string() -> String:
 
 func set_new_target_destination() -> void:
 	if state == State.WANDER:
-		#ray_cast_2d.enabled = true
-		while true:
-			var new_relative_vector : Vector2 = Vector2(randi_range(-100, 100), randi_range(-50,50))
-			ray_cast_2d.target_position = new_relative_vector
-			if ray_cast_2d.is_colliding():
-				pass
-			#print("New Target Position: "+str(position + new_relative_vector))
-			target_destination = self.position + new_relative_vector
-			#print("New Target Destination: "+str(target_destination))
-			break
-			#ray_cast_2d.enabled = false
+		ray_cast_2d.enabled = true
+		ray_cast_2d.target_position = Vector2.ZERO
+		var new_relative_vector : Vector2 = generate_random_direction()
+		ray_cast_2d.target_position = new_relative_vector
+		if ray_cast_2d.is_colliding():
+			new_relative_vector *= Vector2(-1,-1)
+			print("Change Direction")
+			print("Is Colliding")
+		target_destination = self.position + new_relative_vector
+		#print(target_destination)
+		ray_cast_2d.enabled = false
+		
 	elif state == State.ATTRACT:
+		#print("Bobber Position: %s" % bobber_scene.position)
+		ray_cast_2d.target_position = bobber_scene.position - self.position
+		#print("Ray Cast Position: %s" % (self.position + ray_cast_2d.target_position))
+		if ray_cast_2d.is_colliding():
+			print("Fish will go into wall.")
 		target_destination = bobber_scene.position
 	#if not ray_cast_2d.is_colliding():
 		#set_new_target_destination()
@@ -102,3 +107,15 @@ func set_wander_mode() -> void:
 	if not state == State.WANDER:
 		state = State.WANDER
 		set_new_target_destination()
+
+func change_size() -> void:
+	match fish_size:
+		"Small":
+			self.scale *= Vector2(0.75,0.75)
+		"Medium":
+			self.scale *= Vector2(1.2,1.2)
+		"Large":
+			self.scale *= Vector2(2,2)
+
+func generate_random_direction() -> Vector2:
+	return Vector2(randi_range(-100, 100), randi_range(-50,50))

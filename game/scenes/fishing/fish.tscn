@@ -31,9 +31,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_i8kew")
 
 [node name="TargetPosition" type="Marker2D" parent="." unique_id=1801665432]
+gizmo_extents = 676.7
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=2099350415]
 target_position = Vector2(0, 0)
 collision_mask = 8
 hit_from_inside = true
 collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=926184448]

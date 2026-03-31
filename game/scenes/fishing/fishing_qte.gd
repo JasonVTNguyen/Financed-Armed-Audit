@@ -17,13 +17,13 @@ func _ready() -> void:
 	$"QTE Panel/Increment 2".hide()
 	$"QTE Panel/Increment 3".hide()
 	random_increments()
-	print("Increment 1: ", increments1)
+	#print("Increment 1: ", increments1)
 	$"QTE Panel/Increment 1".position.y = (1 - increments1) * $"QTE Panel".size.y
 	if GameController.current_rod.rod_tier > 0:
-		print("Increment 2: ", increments2)
+		#print("Increment 2: ", increments2)
 		$"QTE Panel/Increment 2".position.y = (1 - increments2) * $"QTE Panel".size.y
 	if GameController.current_rod.rod_tier > 1:
-		print("Increment 3: ", increments3)
+		#print("Increment 3: ", increments3)
 		$"QTE Panel/Increment 3".position.y = (1 - increments3) * $"QTE Panel".size.y
 	await get_tree().create_timer(0.75).timeout
 	is_counting = true
@@ -32,12 +32,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if qte_meter_count >= 100 and is_counting:
-		print("Stopped Counting")
-		print(GameController.fishing_qte_score)
-		is_counting = false
-		if GameController.currentFish.health <= GameController.current_hook.hook_damage:
-			queue_free()
-		get_tree().change_scene_to_file("res://game/scenes/shooting/shooting_phase.tscn")
+		next_phase()
 	if check_if_within_increment1(timing_offset):
 		$"QTE Panel/Increment 1/Increment 1 Number".text = "Now"
 	else:
@@ -114,3 +109,19 @@ func _on_test_button_pressed() -> void:
 	is_counting = true
 	qte_meter_count = 0.0
 	GameController.fishing_qte_score = 0
+
+func next_phase() -> void:
+	#print("Stopped Counting")
+	print(GameController.fishing_qte_score)
+	is_counting = false
+	if GameController.currentFish.health <= GameController.current_hook.hook_damage:
+		GameController.money += GameController.currentFish.value
+		GameController.rounds_fish_caught.append(GameController.currentFish)
+		if GameController.current_bait > 0:
+			get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")
+		else:
+			print("Total Value: " + str(GameController.total_value))
+			print("Round Goal: " + str(GameController.story_round_objectives.get(GameController.current_round)))
+			get_tree().change_scene_to_file("res://game/scenes/results/results_screen.tscn")
+	else:
+		get_tree().change_scene_to_file("res://game/scenes/shooting/shooting_phase.tscn")

@@ -8,11 +8,11 @@ var total_value : float = 0.0
 var money : float = 0.0
 var total_bait : int = 3
 var current_round : int = 0
+var rounds_fish_caught : Array[Fish] = []
+
 
 var fishing_qte_score : float
 
-enum MouseState {IN, OUTSIDE}
-var mouse_state = MouseState.IN
 
 var current_bait : int = 3
 var primary_gun : Gun
@@ -59,6 +59,7 @@ func reset_game():
 	secondary_gun_upgrades = []
 	current_hook = Catalogue.hooks.get(0)
 	current_rod = Catalogue.rods.get(0)
+	rounds_fish_caught = []
 
 func start_game():
 	reset_game()
