@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4s4g28m08jb" path="res://game/bg/blacksmithbg.png" id="2_2h1f7"]
 [ext_resource type="PackedScene" uid="uid://deiqhg82uiynn" path="res://game/scenes/shopping/replace_weapon_panel.tscn" id="3_2h1f7"]
 [ext_resource type="LabelSettings" uid="uid://dwpk2dd5sqyyp" path="res://game/scenes/gui/Style Settings/ShopDescriptors.tres" id="3_4wbwc"]
+[ext_resource type="PackedScene" uid="uid://bk6sggpq6shqv" path="res://game/scenes/shopping/buy_ammo_panel.tscn" id="5_2eqhl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2h1f7"]
 font_size = 32
@@ -18,14 +19,15 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Blacksmith" type="Control" unique_id=974088349]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 242.0
+offset_bottom = 102.0
 script = ExtResource("1_eekjm")
 
 [node name="ShoppingBlacksmithScene" type="Sprite2D" parent="." unique_id=1038334379]
 position = Vector2(576, 328)
 scale = Vector2(0.73, 0.54666674)
 texture = ExtResource("2_2h1f7")
+metadata/_edit_lock_ = true
 
 [node name="To Shop Button" type="Button" parent="." unique_id=1453869757]
 layout_mode = 0
@@ -67,6 +69,7 @@ offset_left = 440.0
 offset_top = 8.0
 offset_right = 838.0
 offset_bottom = 130.0
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2131460250]
 layout_mode = 0
@@ -90,7 +93,13 @@ layout_mode = 0
 offset_top = 0.0
 offset_bottom = 658.0
 
+[node name="Buy Ammo Panel" parent="." unique_id=83876699 instance=ExtResource("5_2eqhl")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="To Shop Button" to="." method="_on_to_shop_button_pressed"]
+[connection signal="mouse_entered" from="Buy Ammo Button" to="." method="_on_buy_ammo_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buy Ammo Button" to="." method="_on_buy_ammo_button_mouse_exited"]
 [connection signal="pressed" from="Buy Ammo Button" to="." method="_on_buy_ammo_button_pressed"]
 [connection signal="mouse_entered" from="Buy Weapon Button" to="." method="_on_buy_weapon_button_mouse_entered"]
 [connection signal="mouse_exited" from="Buy Weapon Button" to="." method="_on_buy_weapon_button_mouse_exited"]

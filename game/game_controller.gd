@@ -9,8 +9,8 @@ var money : float = 0.0
 var total_bait : int = 3
 var current_round : int = 0
 var rounds_fish_caught : Array[Fish] = []
-
-
+var money_at_beginning : float = 0.0
+var number_of_shots : int = 0
 var fishing_qte_score : float
 
 
@@ -55,11 +55,13 @@ func reset_game():
 	current_round = 0
 	primary_gun = Catalogue.weapons.get(0)
 	primary_gun_upgrades = []
-	secondary_gun = null
+	secondary_gun = Catalogue.weapons.get(1)
 	secondary_gun_upgrades = []
 	current_hook = Catalogue.hooks.get(0)
 	current_rod = Catalogue.rods.get(0)
 	rounds_fish_caught = []
+	money_at_beginning = 0.0
+	number_of_shots = 0
 
 func start_game():
 	reset_game()

@@ -31,6 +31,8 @@ func _process(delta: float) -> void:
 
 func _on_start_next_round_button_pressed() -> void:
 	GameController.current_bait = GameController.total_bait
+	GameController.money_at_beginning = GameController.money
+	GameController.number_of_shots = 0
 	if shopping_menu.has_bought_something:
 		description.text = "Thanks for your patronage!"
 	else:
@@ -43,6 +45,10 @@ func _on_buy_bait_button_pressed() -> void:
 	if GameController.money >= bait_cost:
 		GameController.total_bait += 1
 		GameController.money -= bait_cost
+	else:
+		item_name.text = ""
+		description.text = "Nice try, stupid. Bring enough money next time."
+		function_description.text = ""
 	shopping_menu.has_bought_something = true
 	update_values()
 

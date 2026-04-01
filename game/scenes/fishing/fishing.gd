@@ -19,6 +19,7 @@ func _ready() -> void:
 	$"Bait Count".text = str(GameController.current_bait)
 	$"Total Value".text = "%.2f" % GameController.money
 	$"Required Weight Total".text = "%.2f" % GameController.story_round_objectives.get(GameController.current_round)
+	
 	for i in range(5):
 		spawn_fish()
 	GameController.fishing_qte_score = 0

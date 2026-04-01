@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 		else:
 			$"QTE Panel/Increment 3/Increment 3 Number".text = ""
 	if is_counting:
-		qte_meter_count += 0.05
+		qte_meter_count += 1
 	update_values()
 
 func _input(event: InputEvent) -> void:
@@ -120,7 +120,7 @@ func next_phase() -> void:
 		if GameController.current_bait > 0:
 			get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")
 		else:
-			print("Total Value: " + str(GameController.total_value))
+			print("Total Value: " + str(GameController.money))
 			print("Round Goal: " + str(GameController.story_round_objectives.get(GameController.current_round)))
 			get_tree().change_scene_to_file("res://game/scenes/results/results_screen.tscn")
 	else:

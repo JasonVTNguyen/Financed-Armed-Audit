@@ -4,7 +4,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var total : float
-	var beginning = Caught_Fish.new_fish("Beginning Balance", GameController.money)
+	var beginning = Caught_Fish.new_fish("Beginning Balance", GameController.money_at_beginning)
 	$Panel/VBoxContainer.add_child(beginning)
 	beginning.update_labels()
 	
@@ -19,7 +19,7 @@ func _ready() -> void:
 	$Panel/VBoxContainer.add_child(subtract_goal)
 	subtract_goal.update_labels()
 	
-	var leftover = GameController.money + total - GameController.story_round_objectives.get(GameController.current_round)
+	var leftover = GameController.money_at_beginning + total - GameController.story_round_objectives.get(GameController.current_round)
 
 	$"Total Leftover".text = "Total Leftover: $%.2f" % leftover
 	

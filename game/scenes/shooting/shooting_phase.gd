@@ -51,9 +51,10 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
+		GameController.number_of_shots += 1
 		if GameController.gun_state == GameController.GunState.HIT and reload_timer.is_stopped() and switch_timer.is_stopped():
 			if update_damage():
-			
+				
 				#self.add_child(gunshot_particles)
 				gunshot_particles.emitting = false
 				gunshot_particles.position = $Gun.position
@@ -78,7 +79,14 @@ func _input(event: InputEvent) -> void:
 	update_labels()
 
 func target_dead():
-	GameController.money += GameController.currentFish.value
+	var value : float = GameController.currentFish.value
+	for item : Item in GameController.inventory.items:
+		if item.item_type == Item.Item_Type.VALUE:
+			value += item.apply_conditional_flat()
+	for item : Item in GameController.inventory.items:
+		if item.item_type == Item.Item_Type.VALUE:
+			value *= item.apply_conditional_percent()
+	GameController.money += value
 	GameController.rounds_fish_caught.append(GameController.currentFish)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if GameController.current_bait > 0:
