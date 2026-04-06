@@ -64,6 +64,8 @@ size = Vector2(649.99994, 613.3334)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3ek0b"]
 font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4wbwc"]
 outline_size = 5
