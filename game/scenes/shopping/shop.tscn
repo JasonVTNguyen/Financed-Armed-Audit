@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cdae1n3fk48r5" path="res://game/scenes/shopping/shop.gd" id="1_gcpnk"]
 [ext_resource type="Texture2D" uid="uid://b77nff8c1th10" path="res://game/bg/shopbg.png" id="2_bgeqa"]
+[ext_resource type="Texture2D" uid="uid://bx7tb8i7loedq" path="res://game/sprites/shopkeeper/shop/baiticon.png" id="3_70ytf"]
+[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="3_dwpt2"]
+[ext_resource type="Texture2D" uid="uid://b362ghgdb4jnr" path="res://game/sprites/shopkeeper/shop/shopkeepershopidle1.png" id="4_3j4gy"]
+[ext_resource type="Texture2D" uid="uid://bc0tk8l3eo207" path="res://game/sprites/shopkeeper/shop/shopkeepershopidle2.png" id="5_8iqxc"]
+[ext_resource type="Texture2D" uid="uid://de2vm2ei3bu3n" path="res://game/sprites/shopkeeper/shop/shopkeepershopblink.png" id="5_70ytf"]
+[ext_resource type="Texture2D" uid="uid://81dljnfru68x" path="res://game/sprites/shopkeeper/shop/shopkeepershopidle3.png" id="6_70ytf"]
+[ext_resource type="Texture2D" uid="uid://ccvd6phkwndyn" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad1.png" id="7_g7801"]
+[ext_resource type="Texture2D" uid="uid://dhn7c26ddr17w" path="res://game/sprites/shopkeeper/shop/shopkeepershopidle4.png" id="7_qel77"]
+[ext_resource type="Texture2D" uid="uid://cedcnqswnha5r" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad2.png" id="8_byvty"]
+[ext_resource type="Texture2D" uid="uid://f5waoibx3eu4" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad3.png" id="9_7sivm"]
+[ext_resource type="Texture2D" uid="uid://ca88wai1mbnhb" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad4.png" id="10_iqymf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcpnk"]
 font_size = 30
@@ -21,6 +32,200 @@ outline_color = Color(0, 0, 0, 1)
 font_size = 14
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tthw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_70ytf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_70ytf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}],
+"loop": true,
+"name": &"idle-mad",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_g7801")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_byvty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7sivm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_iqymf")
+}],
+"loop": true,
+"name": &"talking-mad",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3j4gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8iqxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_70ytf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qel77")
+}],
+"loop": true,
+"name": &"talking-normal",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qel77"]
+size = Vector2(547.7484, 490.09015)
 
 [node name="Shop" type="Control" unique_id=1294004998]
 layout_mode = 3
@@ -51,13 +256,14 @@ offset_right = 192.0
 offset_bottom = 640.0
 text = "Blacksmith"
 
-[node name="Buy Bait Button" type="Button" parent="." unique_id=1320310376]
+[node name="Buy Bait Button" type="TextureButton" parent="." unique_id=804342701]
 layout_mode = 0
-offset_left = 800.0
-offset_top = 48.0
-offset_right = 928.0
-offset_bottom = 136.0
-text = "Buy Bait"
+offset_left = 816.0
+offset_top = 32.0
+offset_right = 944.0
+offset_bottom = 160.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_70ytf")
 
 [node name="Money" type="Label" parent="." unique_id=46260244]
 layout_mode = 0
@@ -69,12 +275,19 @@ text = "Money"
 label_settings = SubResource("LabelSettings_gcpnk")
 horizontal_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=458852790]
+[node name="Panel" type="Panel" parent="." unique_id=1039295288]
 layout_mode = 0
-offset_left = 296.0
+offset_left = 304.0
 offset_top = 344.0
 offset_right = 880.0
 offset_bottom = 536.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=458852790]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 352.0
+offset_right = 872.0
+offset_bottom = 528.0
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=1771261502]
 layout_mode = 2
@@ -88,37 +301,45 @@ label_settings = SubResource("LabelSettings_bgeqa")
 layout_mode = 2
 label_settings = SubResource("LabelSettings_dwpt2")
 
-[node name="Buy Item Button 1" type="Button" parent="." unique_id=1834953524]
+[node name="Buy Item Button 1" type="TextureButton" parent="." unique_id=2120780664]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 48.0
-offset_right = 168.0
-offset_bottom = 136.0
-text = "Item 1"
+offset_left = 48.0
+offset_top = 32.0
+offset_right = 176.0
+offset_bottom = 160.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_dwpt2")
+metadata/_edit_lock_ = true
 
-[node name="Buy Item Button 2" type="Button" parent="." unique_id=520895541]
+[node name="Buy Item Button 2" type="TextureButton" parent="." unique_id=495219587]
 layout_mode = 0
-offset_left = 208.0
-offset_top = 48.0
+offset_left = 224.0
+offset_top = 32.0
 offset_right = 352.0
-offset_bottom = 136.0
-text = "Item 2"
+offset_bottom = 160.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_dwpt2")
+metadata/_edit_lock_ = true
 
-[node name="Buy Item Button 3" type="Button" parent="." unique_id=550621906]
+[node name="Buy Item Button 3" type="TextureButton" parent="." unique_id=1920243650]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 184.0
-offset_right = 168.0
-offset_bottom = 276.0
-text = "Item 3"
+offset_left = 48.0
+offset_top = 168.0
+offset_right = 176.0
+offset_bottom = 296.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_dwpt2")
+metadata/_edit_lock_ = true
 
-[node name="Buy Item Button 4" type="Button" parent="." unique_id=2133448149]
+[node name="Buy Item Button 4" type="TextureButton" parent="." unique_id=1409096296]
 layout_mode = 0
-offset_left = 208.0
-offset_top = 184.0
+offset_left = 224.0
+offset_top = 168.0
 offset_right = 352.0
-offset_bottom = 276.0
-text = "Item 4"
+offset_bottom = 296.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("3_dwpt2")
+metadata/_edit_lock_ = true
 
 [node name="Upgrade Rod Button" type="Button" parent="." unique_id=392277700]
 layout_mode = 0
@@ -127,6 +348,20 @@ offset_top = 184.0
 offset_right = 1112.0
 offset_bottom = 272.0
 text = "Upgrade Rod"
+
+[node name="Shopkeeper" type="AnimatedSprite2D" parent="." unique_id=107028695]
+position = Vector2(576, 323.555)
+scale = Vector2(0.555, 0.555)
+sprite_frames = SubResource("SpriteFrames_5tthw")
+animation = &"idle-mad"
+frame_progress = 0.76775366
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="Shopkeeper" unique_id=1491278374]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shopkeeper/Area2D" unique_id=1701796233]
+position = Vector2(-0.00036621094, -222.62173)
+shape = SubResource("RectangleShape2D_qel77")
 
 [connection signal="pressed" from="Start Next Round Button" to="." method="_on_start_next_round_button_pressed"]
 [connection signal="pressed" from="Blacksmith Button" to="." method="_on_blacksmith_button_pressed"]
@@ -145,3 +380,7 @@ text = "Upgrade Rod"
 [connection signal="mouse_entered" from="Buy Item Button 4" to="." method="_on_buy_item_button_4_mouse_entered"]
 [connection signal="mouse_exited" from="Buy Item Button 4" to="." method="clear_description"]
 [connection signal="pressed" from="Buy Item Button 4" to="." method="_on_buy_item_button_4_pressed"]
+[connection signal="mouse_entered" from="Upgrade Rod Button" to="." method="_on_upgrade_rod_button_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade Rod Button" to="." method="clear_description"]
+[connection signal="pressed" from="Upgrade Rod Button" to="." method="_on_upgrade_rod_button_pressed"]
+[connection signal="input_event" from="Shopkeeper/Area2D" to="." method="_on_area_2d_input_event"]

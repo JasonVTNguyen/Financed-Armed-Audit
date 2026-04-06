@@ -11,32 +11,33 @@ script = ExtResource("1_3pv5c")
 
 [node name="Panel" type="Panel" parent="." unique_id=561315192]
 layout_mode = 0
-offset_left = 347.0
-offset_top = 244.0
-offset_right = 799.0
-offset_bottom = 405.0
+offset_left = 344.0
+offset_top = 240.0
+offset_right = 800.0
+offset_bottom = 400.0
 
 [node name="Label" type="Label" parent="Panel" unique_id=319894862]
 layout_mode = 0
-offset_right = 453.0
-offset_bottom = 23.0
-text = "Which weapon do you want to buy a weapon for?"
+offset_top = 8.0
+offset_right = 456.0
+offset_bottom = 31.0
+text = "Which weapon do you want to buy ammo for?"
 horizontal_alignment = 1
 
 [node name="Primary Ammo Button" type="Button" parent="Panel" unique_id=601445569]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 98.0
-offset_right = 133.0
-offset_bottom = 137.0
+offset_left = 32.0
+offset_top = 104.0
+offset_right = 144.0
+offset_bottom = 144.0
 text = "Primary"
 
 [node name="Secondary Ammo Button" type="Button" parent="Panel" unique_id=1218801230]
 layout_mode = 0
-offset_left = 293.0
-offset_top = 108.0
-offset_right = 404.0
-offset_bottom = 139.0
+offset_left = 312.0
+offset_top = 104.0
+offset_right = 424.0
+offset_bottom = 144.0
 text = "Secondary"
 
 [connection signal="pressed" from="Panel/Primary Ammo Button" to="." method="_on_primary_ammo_button_pressed"]

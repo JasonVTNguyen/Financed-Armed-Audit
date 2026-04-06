@@ -1,24 +1,58 @@
 [gd_scene format=3 uid="uid://cu6abksrs4xpo"]
 
-[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="1_hmi3o"]
+[ext_resource type="Texture2D" uid="uid://cjpcsdpdlfhn5" path="res://game/sprites/fishing/bobber_in.png" id="1_nm1xi"]
 [ext_resource type="Script" uid="uid://cgeosklm2n8k4" path="res://game/scenes/fishing/bobber.gd" id="2_kh2sh"]
+[ext_resource type="Texture2D" uid="uid://b7b5n0q4doth1" path="res://game/sprites/fishing/bobber_in2.png" id="2_lrxcu"]
+[ext_resource type="Texture2D" uid="uid://5psi2iq5yyyu" path="res://game/sprites/fishing/bobber_in3.png" id="3_22a1h"]
+[ext_resource type="Texture2D" uid="uid://coste3u4pc2ac" path="res://game/sprites/fishing/bobber_out.png" id="4_t836u"]
+[ext_resource type="Texture2D" uid="uid://cu6eyccbhj0et" path="res://game/sprites/fishing/circle.png" id="6_2gadq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j3aex"]
-radius = 253.76878
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7mr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nm1xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lrxcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_22a1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lrxcu")
+}],
+"loop": true,
+"name": &"bobber-in",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t836u")
+}],
+"loop": true,
+"name": &"bobber-out",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3s4cj"]
+radius = 175.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hmi3o"]
 radius = 69.85697
 
-[node name="Bobber" type="Sprite2D" unique_id=1580847433]
+[node name="Bobber" type="AnimatedSprite2D" unique_id=768185294]
 scale = Vector2(0.4296875, 0.4296875)
-texture = ExtResource("1_hmi3o")
+sprite_frames = SubResource("SpriteFrames_h7mr2")
+animation = &"bobber-in"
 script = ExtResource("2_kh2sh")
 
 [node name="Attraction Range" type="Area2D" parent="." unique_id=115710734]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attraction Range" unique_id=2030451897]
-shape = SubResource("CircleShape2D_j3aex")
+scale = Vector2(1.75, 0.8)
+shape = SubResource("CircleShape2D_3s4cj")
 
 [node name="Fish Collider" type="Area2D" parent="." unique_id=219736177]
 scale = Vector2(0.9999998, 0.9999998)
@@ -26,5 +60,11 @@ scale = Vector2(0.9999998, 0.9999998)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fish Collider" unique_id=341548583]
 shape = SubResource("CircleShape2D_hmi3o")
 debug_color = Color(0.704155, 0.35361308, 0.85866904, 0.41960785)
+
+[node name="Circle" type="Sprite2D" parent="." unique_id=895561016]
+modulate = Color(1, 1, 1, 0.37254903)
+position = Vector2(2.327273, -2.327282)
+scale = Vector2(5.3090906, 2.4727273)
+texture = ExtResource("6_2gadq")
 
 [connection signal="area_entered" from="Attraction Range" to="." method="_on_attraction_range_area_entered"]

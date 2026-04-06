@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 @onready var fishing_scene : Node2D = get_parent()
 
@@ -15,14 +15,17 @@ func _process(delta: float) -> void:
 		var overlapping : Array[Area2D] = $"Attraction Range".get_overlapping_areas()
 		for node: Area2D in overlapping:
 			node.set_attract_mode()
+		self.play("bobber-in")
 	if not is_placed:
 		var overlapping : Array[Area2D] = $"Attraction Range".get_overlapping_areas()
 		for node: Area2D in overlapping:
 			node.set_wander_mode()
+		self.play("bobber-out")
 		position = get_viewport().get_mouse_position()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Select"):
+		if fishing_scene.check_if_can_place_bobber():
 			is_placed = true
 			fishing_scene.set_bobber(self.position)
 	if event.is_action_pressed("Cancel"):

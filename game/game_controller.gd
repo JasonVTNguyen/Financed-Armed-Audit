@@ -43,6 +43,7 @@ var gun_state : GunState = GunState.MISS
 
 func _ready() -> void:
 	print("Game Loaded.")
+	print(RenderingServer.get_video_adapter_name())
 	#print(get_viewport().get_visible_rect().size[0])
 
 func reset_game():
@@ -62,7 +63,7 @@ func reset_game():
 	rounds_fish_caught = []
 	money_at_beginning = 0.0
 	number_of_shots = 0
-
+	
 func start_game():
 	reset_game()
 	get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")

@@ -2,13 +2,16 @@ extends Node2D
 
 var fish_scene : PackedScene = preload("res://game/scenes/fishing/fish.tscn")
 var fishing_qte : PackedScene = preload("res://game/scenes/fishing/fishing_qte.tscn")
+@onready var inventory: Inventory = $Inventory
+
+var inv_opened : bool = false
 
 var bobber_location : Vector2
 @onready var fish_move_area : NavigationRegion2D = $"Fish Move Area"
 
 enum BobberState {SET, NOT_SET}
-
-
+enum MouseState {IN,OUT}
+var mouse_state = MouseState.OUT
 var bobber_state = BobberState.NOT_SET
 
 
@@ -16,7 +19,7 @@ var is_qte : bool = false
 
 func _ready() -> void:
 	#print("Fishing Scene Ready")
-	$"Bait Count".text = str(GameController.current_bait)
+	$"Bait Count".text = "x %d" % GameController.current_bait
 	$"Total Value".text = "%.2f" % GameController.money
 	$"Required Weight Total".text = "%.2f" % GameController.story_round_objectives.get(GameController.current_round)
 	
@@ -51,14 +54,42 @@ func makeFish(fish):
 		bobber_state = BobberState.NOT_SET
 		is_qte = true
 
+func check_if_can_place_bobber() -> bool:
+	match mouse_state:
+		MouseState.IN:
+			return true
+		MouseState.OUT:
+			return false
+	return false
 
 func set_bobber(bobber_pos) -> void:
-	bobber_location = bobber_pos
-	bobber_state = BobberState.SET
-	#print(bobber_location)
+	if not inv_opened and check_if_can_place_bobber():
+		bobber_location = bobber_pos
+		bobber_state = BobberState.SET
+		#print(bobber_location)
 
 func unset_bobber() -> void:
 	bobber_state = BobberState.NOT_SET
 
 func _on_skip_to_shop_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
+
+
+func _on_open_inventory_button_pressed() -> void:
+	if bobber_state == BobberState.NOT_SET:
+		print(GameController.inventory.items)
+		inventory.update_labels()
+		inventory.show()
+		inv_opened = true
+
+func _on_inventory_close_inventory() -> void:
+	inventory.hide()
+	inv_opened = false
+
+
+func _on_lake_boundaries_mouse_entered() -> void:
+	mouse_state = MouseState.OUT
+
+
+func _on_lake_boundaries_mouse_exited() -> void:
+	mouse_state = MouseState.IN

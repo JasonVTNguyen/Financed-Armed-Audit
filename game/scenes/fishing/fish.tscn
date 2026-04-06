@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ch3grr7rerk33" path="res://game/scenes/fishing/fish.gd" id="2_c75su"]
 [ext_resource type="Script" uid="uid://cnm0q0r3nbl0x" path="res://game/scenes/fishing/create_fish_button.gd" id="3_c75su"]
-[ext_resource type="Texture2D" uid="uid://v45ocpx33by4" path="res://game/sprites/fish_shadow.png" id="3_i8kew"]
+[ext_resource type="Texture2D" uid="uid://v45ocpx33by4" path="res://game/sprites/fishing/fish_shadow.png" id="3_i8kew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c75su"]
 radius = 162.135

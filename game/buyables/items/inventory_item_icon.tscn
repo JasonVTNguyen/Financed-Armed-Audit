@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cl1jgr5fhfkoy"]
+
+[ext_resource type="Script" uid="uid://cyhuk6hbon8yd" path="res://game/buyables/items/inventory_item_icon.gd" id="1_h4ait"]
+[ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="2_ssgmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssgmh"]
+size = Vector2(128, 128.00003)
+
+[node name="Inventory Item" type="Control" unique_id=1009808404]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h4ait")
+
+[node name="IconBit" type="Sprite2D" parent="." unique_id=465086576]
+position = Vector2(40, 40)
+scale = Vector2(0.37499997, 0.37499997)
+texture = ExtResource("2_ssgmh")
+
+[node name="Area2D" type="Area2D" parent="IconBit" unique_id=589393198]
+priority = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IconBit/Area2D" unique_id=1257071127]
+position = Vector2(0, 3.0517578e-05)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ssgmh")
+
+[connection signal="mouse_entered" from="IconBit/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="IconBit/Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -4,6 +4,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keejj"]
 bg_color = Color(0.11489678, 0.11489683, 0.11489671, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtw1s"]
+bg_color = Color(0.5294118, 0.5294118, 0.5294118, 0.38039216)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfhyk"]
 bg_color = Color(0.38039216, 0.6862745, 0.3019608, 0.49411765)
@@ -20,40 +31,48 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_jfhyk"]
-font_size = 20
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qhed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wllfo"]
+bg_color = Color(0.32156864, 0.32156864, 0.32156864, 0.34901962)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="Inventory" type="Control" unique_id=441917759]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
 script = ExtResource("1_jfhyk")
 
 [node name="Panel" type="Panel" parent="." unique_id=1813150940]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 456.0
-offset_right = 912.0
+offset_left = 48.0
+offset_top = 272.0
+offset_right = 1088.0
 offset_bottom = 648.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_keejj")
 
-[node name="Items" type="Label" parent="Panel" unique_id=136952215]
+[node name="Panel2" type="Panel" parent="Panel" unique_id=657474469]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
-offset_right = 464.0
-offset_bottom = 192.0
-text = "Item"
+offset_top = 176.0
+offset_right = 136.0
+offset_bottom = 368.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtw1s")
 
 [node name="Primary Weapon Box" type="PanelContainer" parent="Panel" unique_id=1548207852]
 layout_mode = 0
-offset_left = 464.0
-offset_right = 672.0
-offset_bottom = 96.0
+offset_left = 816.0
+offset_top = 176.0
+offset_right = 1032.0
+offset_bottom = 272.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jfhyk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Primary Weapon Box" unique_id=1233651409]
@@ -68,10 +87,10 @@ layout_mode = 2
 
 [node name="Secondary Weapon Box" type="PanelContainer" parent="Panel" unique_id=915958512]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 96.0
-offset_right = 672.0
-offset_bottom = 192.0
+offset_left = 816.0
+offset_top = 272.0
+offset_right = 1032.0
+offset_bottom = 368.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3qhed")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Secondary Weapon Box" unique_id=1157901091]
@@ -83,24 +102,59 @@ layout_mode = 2
 [node name="Secondary Ammo" type="Label" parent="Panel/Secondary Weapon Box/VBoxContainer" unique_id=998843446]
 layout_mode = 2
 
+[node name="Description Label" type="Label" parent="Panel" unique_id=462549250]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 43.0
+offset_right = 1016.0
+offset_bottom = 169.0
+label_settings = SubResource("LabelSettings_jfhyk")
+
+[node name="Name Label" type="Label" parent="Panel" unique_id=2011086628]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 16.0
+offset_right = 1016.0
+offset_bottom = 39.0
+label_settings = SubResource("LabelSettings_3qhed")
+
+[node name="Item Icon" type="Sprite2D" parent="Panel" unique_id=54818714]
+position = Vector2(76, 74)
+
+[node name="Panel" type="Panel" parent="Panel" unique_id=179733955]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 176.0
+offset_right = 808.0
+offset_bottom = 368.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_wllfo")
+
+[node name="Items Container" type="HFlowContainer" parent="Panel" unique_id=1663045378]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.062000003
+anchor_top = -0.74100006
+anchor_right = -0.062000003
+anchor_bottom = -0.74100006
+offset_left = 208.48001
+offset_top = 454.61603
+offset_right = 872.48
+offset_bottom = 646.616
+mouse_filter = 2
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 50
+
 [node name="Close Inventory Button" type="Button" parent="." unique_id=2104197141]
 layout_mode = 0
 offset_left = 512.0
-offset_top = 416.0
+offset_top = 232.0
 offset_right = 640.0
-offset_bottom = 448.0
+offset_bottom = 264.0
 text = "Close"
 
-[node name="Gun Description" type="Label" parent="." unique_id=462549250]
-layout_mode = 0
-offset_left = 237.0
-offset_top = 325.0
-offset_right = 911.0
-offset_bottom = 413.0
-label_settings = SubResource("LabelSettings_jfhyk")
-
 [connection signal="mouse_entered" from="Panel/Primary Weapon Box" to="." method="_on_primary_weapon_box_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/Primary Weapon Box" to="." method="_on_primary_weapon_box_mouse_exited"]
+[connection signal="mouse_exited" from="Panel/Primary Weapon Box" to="." method="clear_description_label"]
 [connection signal="mouse_entered" from="Panel/Secondary Weapon Box" to="." method="_on_secondary_weapon_box_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/Secondary Weapon Box" to="." method="_on_secondary_weapon_box_mouse_exited"]
+[connection signal="mouse_exited" from="Panel/Secondary Weapon Box" to="." method="clear_description_label"]
 [connection signal="pressed" from="Close Inventory Button" to="." method="_on_close_inventory_button_pressed"]

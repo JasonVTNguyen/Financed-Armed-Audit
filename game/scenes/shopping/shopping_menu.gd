@@ -9,7 +9,7 @@ var for_sale_item3 : Item
 var item3_price : float
 var for_sale_item4 : Item
 var item4_price : float
-
+var buyable_rod : FishingRod = Catalogue.rods.get(0)
 var has_bought_something : bool = false
 
 @onready var blacksmith: Control = $Blacksmith
@@ -33,6 +33,14 @@ func _ready() -> void:
 	
 	has_bought_something = false
 	
+	if GameController.current_rod == Catalogue.rods.get(0):
+		buyable_rod = Catalogue.rods.get(1)
+	elif GameController.current_rod == Catalogue.rods.get(1):
+		buyable_rod = Catalogue.rods.get(2)
+	else:
+		buyable_rod = null
+		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

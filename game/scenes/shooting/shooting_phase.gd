@@ -81,10 +81,10 @@ func _input(event: InputEvent) -> void:
 func target_dead():
 	var value : float = GameController.currentFish.value
 	for item : Item in GameController.inventory.items:
-		if item.item_type == Item.Item_Type.VALUE:
+		if item.item_type == Item.Item_Type.FISHING:
 			value += item.apply_conditional_flat()
 	for item : Item in GameController.inventory.items:
-		if item.item_type == Item.Item_Type.VALUE:
+		if item.item_type == Item.Item_Type.FISHING:
 			value *= item.apply_conditional_percent()
 	GameController.money += value
 	GameController.rounds_fish_caught.append(GameController.currentFish)

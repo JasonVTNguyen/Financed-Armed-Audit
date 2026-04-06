@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Fish
 
 @onready var fishing_scene : Node2D = get_parent()
-@onready var bobber_scene : Sprite2D = $"../Bobber"
+@onready var bobber_scene : AnimatedSprite2D = $"../Bobber"
 @onready var target_position: Marker2D = $TargetPosition
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 

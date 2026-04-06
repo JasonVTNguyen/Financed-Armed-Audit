@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://cu6abksrs4xpo" path="res://game/scenes/fishing/bobber.tscn" id="4_n7eig"]
 [ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="5_f6nhs"]
 [ext_resource type="Texture2D" uid="uid://bsigi13tsl8o6" path="res://game/bg/lakebg.png" id="5_n7eig"]
+[ext_resource type="Texture2D" uid="uid://bx7tb8i7loedq" path="res://game/sprites/shopkeeper/shop/baiticon.png" id="6_f6nhs"]
 [ext_resource type="Script" uid="uid://7k0ss52vhvmq" path="res://game/scenes/fishing/fish_dictionary.gd" id="7_j3aex"]
+[ext_resource type="PackedScene" uid="uid://cnctdm4qoh7yt" path="res://game/scenes/gui/inventory.tscn" id="7_qbdcm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6nhs"]
-size = Vector2(1211.5, 222)
+size = Vector2(1199, 222)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i263x"]
 font_size = 64
@@ -37,6 +39,7 @@ metadata/_edit_lock_ = true
 [node name="Lake Boundaries" type="StaticBody2D" parent="." unique_id=1016460496]
 collision_layer = 8
 collision_mask = 9
+input_pickable = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake Boundaries" unique_id=2131008287]
 polygon = PackedVector2Array(287, 390, 264, 344, 216, 320, 104, 296, 56, 256, 56, 454, 1082, 509, 1056, 344, 1016, 360, 893, 389, 768, 424)
@@ -51,14 +54,18 @@ polygon = PackedVector2Array(84, 441, 64, 256, 125, 186, 270, 123, 328, 61, 340,
 polygon = PackedVector2Array(314, 68, 400, 40, 522, 39, 608, 48, 744, 88, 840, 120, 884, 44, 544, -21, 255, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lake Boundaries" unique_id=982726887]
-position = Vector2(577.25, 543)
+position = Vector2(583.5, 543)
 shape = SubResource("RectangleShape2D_f6nhs")
 
+[node name="Baiticon" type="Sprite2D" parent="." unique_id=557943355]
+position = Vector2(58, 573)
+texture = ExtResource("6_f6nhs")
+
 [node name="Bait Count" type="Label" parent="." unique_id=1535396836]
-offset_left = 8.0
-offset_top = 560.0
-offset_right = 303.0
-offset_bottom = 648.0
+offset_left = 104.0
+offset_top = 549.0
+offset_right = 399.0
+offset_bottom = 637.0
 text = "Total Bait"
 label_settings = SubResource("LabelSettings_i263x")
 
@@ -91,14 +98,30 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_n7eig")
 
 [node name="Skip to Shop Button" type="Button" parent="." unique_id=1484612838]
-offset_left = 496.0
-offset_top = 585.0
-offset_right = 666.0
-offset_bottom = 642.0
+offset_left = 959.0
+offset_top = 577.0
+offset_right = 1129.0
+offset_bottom = 634.0
 text = "Skip to Shop"
 
 [node name="Test Fish Target" type="Sprite2D" parent="." unique_id=448097304]
+position = Vector2(-64, -71)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_f6nhs")
 
+[node name="Open Inventory Button" type="Button" parent="." unique_id=2043626432]
+offset_left = 495.0
+offset_top = 575.0
+offset_right = 670.0
+offset_bottom = 629.0
+text = "Inventory"
+
+[node name="Inventory" parent="." unique_id=441917759 instance=ExtResource("7_qbdcm")]
+visible = false
+z_index = 4
+
+[connection signal="mouse_entered" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_entered"]
+[connection signal="mouse_exited" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_exited"]
 [connection signal="pressed" from="Skip to Shop Button" to="." method="_on_skip_to_shop_button_pressed"]
+[connection signal="pressed" from="Open Inventory Button" to="." method="_on_open_inventory_button_pressed"]
+[connection signal="close_inventory" from="Inventory" to="." method="_on_inventory_close_inventory"]

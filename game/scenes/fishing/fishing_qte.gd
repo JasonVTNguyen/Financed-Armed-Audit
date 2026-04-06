@@ -28,7 +28,6 @@ func _ready() -> void:
 	await get_tree().create_timer(0.75).timeout
 	is_counting = true
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if qte_meter_count >= 100 and is_counting:
@@ -48,7 +47,10 @@ func _process(delta: float) -> void:
 		else:
 			$"QTE Panel/Increment 3/Increment 3 Number".text = ""
 	if is_counting:
-		qte_meter_count += 1
+		if RenderingServer.get_video_adapter_name().contains("Intel"):
+			qte_meter_count += 1
+		else:
+			qte_meter_count += 0.05
 	update_values()
 
 func _input(event: InputEvent) -> void:

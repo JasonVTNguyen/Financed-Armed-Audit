@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v45ocpx33by4"
-path="res://.godot/imported/fish_shadow.png-c27b11454c5e3615ed40688dfb50919b.ctex"
+uid="uid://bl6jko8573wcb"
+path="res://.godot/imported/shopkeeperblacksmithidle1.png-6fcef251a115bf830766abc30deaa9b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/sprites/fish_shadow.png"
-dest_files=["res://.godot/imported/fish_shadow.png-c27b11454c5e3615ed40688dfb50919b.ctex"]
+source_file="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithidle1.png"
+dest_files=["res://.godot/imported/shopkeeperblacksmithidle1.png-6fcef251a115bf830766abc30deaa9b9.ctex"]
 
 [params]
 

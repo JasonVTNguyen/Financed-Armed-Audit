@@ -13,6 +13,7 @@ class_name Gun
 @export var buyable_ammo : int # How much Ammo can be bought at once.
 
 @export var gun_desc : String # Description of the Gun
+@export var gun_img : Texture # What does the Gun look like
 
 @export var price : float # How much does this gun cost?
 @export var ammo_price : float # For how much does ammo cost?
@@ -36,8 +37,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position = get_viewport().get_mouse_position()
 
-func _init(c_gun_name : String = "Test Gun", c_damage : int = 0, c_cap_ammo : int = 999999999, c_max_ammo : int = 999999999, c_mag_size : int = 10, c_reload_time : float = 1.0, c_fire_rate : float = 15.0, c_price : float = 0.0, c_ammo_price : float = 0.0, c_ammo_purchase_amt : int = 10) -> void:
+func _init(c_gun_name : String = "Test Gun", c_gun_desc : String = "Test Description", c_gun_texture : String = "res://icon.svg", c_damage : int = 0, c_cap_ammo : int = 999999999, c_max_ammo : int = 999999999, c_mag_size : int = 10, c_reload_time : float = 1.0, c_fire_rate : float = 15.0, c_price : float = 0.0, c_ammo_price : float = 0.0, c_ammo_purchase_amt : int = 10) -> void:
 	gun_name = c_gun_name
+	gun_desc = c_gun_desc
+	gun_img = load(c_gun_texture)
 	damage = c_damage
 	cap_ammo = c_cap_ammo
 	max_ammo = c_max_ammo
@@ -47,7 +50,7 @@ func _init(c_gun_name : String = "Test Gun", c_damage : int = 0, c_cap_ammo : in
 	price = c_price
 	ammo_price = c_ammo_price
 	ammo_purchase_amt = c_ammo_purchase_amt
-
+	
 
 func append_to_gun_upgrades(upgrade : Upgrade):
 	gun_upgrades.append(upgrade)

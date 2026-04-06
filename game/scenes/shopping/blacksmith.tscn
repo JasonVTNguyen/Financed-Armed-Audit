@@ -3,16 +3,69 @@
 [ext_resource type="Script" uid="uid://bkg128qxjnkw6" path="res://game/scenes/shopping/blacksmith.gd" id="1_eekjm"]
 [ext_resource type="Texture2D" uid="uid://c4s4g28m08jb" path="res://game/bg/blacksmithbg.png" id="2_2h1f7"]
 [ext_resource type="PackedScene" uid="uid://deiqhg82uiynn" path="res://game/scenes/shopping/replace_weapon_panel.tscn" id="3_2h1f7"]
-[ext_resource type="LabelSettings" uid="uid://dwpk2dd5sqyyp" path="res://game/scenes/gui/Style Settings/ShopDescriptors.tres" id="3_4wbwc"]
 [ext_resource type="PackedScene" uid="uid://bk6sggpq6shqv" path="res://game/scenes/shopping/buy_ammo_panel.tscn" id="5_2eqhl"]
+[ext_resource type="Texture2D" uid="uid://ba842nok8f247" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithstool.png" id="6_8fr72"]
+[ext_resource type="Texture2D" uid="uid://bl6jko8573wcb" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithidle1.png" id="7_sbn7u"]
+[ext_resource type="Texture2D" uid="uid://drlgvldxk5kuv" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithidle2.png" id="8_xw0ot"]
+[ext_resource type="Texture2D" uid="uid://bruylg7w1l1ib" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithtalking2.png" id="9_dcdrd"]
+[ext_resource type="Texture2D" uid="uid://cfrsn8oirxfo8" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithtalking3.png" id="10_yhxi3"]
+[ext_resource type="Texture2D" uid="uid://c6a7e4bru4ftx" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithtalking4.png" id="11_4pu6d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2h1f7"]
 font_size = 32
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_potna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_sbn7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xw0ot")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_sbn7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dcdrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yhxi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4pu6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xw0ot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dcdrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yhxi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4pu6d")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fr72"]
+size = Vector2(649.99994, 613.3334)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ek0b"]
+font_size = 20
+
 [sub_resource type="LabelSettings" id="LabelSettings_4wbwc"]
-font_size = 12
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -27,7 +80,6 @@ script = ExtResource("1_eekjm")
 position = Vector2(576, 328)
 scale = Vector2(0.73, 0.54666674)
 texture = ExtResource("2_2h1f7")
-metadata/_edit_lock_ = true
 
 [node name="To Shop Button" type="Button" parent="." unique_id=1453869757]
 layout_mode = 0
@@ -63,25 +115,44 @@ text = "Money"
 label_settings = SubResource("LabelSettings_2h1f7")
 horizontal_alignment = 2
 
+[node name="Stool" type="Sprite2D" parent="." unique_id=557064425]
+position = Vector2(477.00003, 351)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_8fr72")
+
+[node name="Shopkeeper" type="AnimatedSprite2D" parent="." unique_id=1521203244]
+position = Vector2(479.00003, 351)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_potna")
+animation = &"talking"
+frame = 3
+frame_progress = 0.8117619
+
+[node name="Area2D" type="Area2D" parent="Shopkeeper" unique_id=1773289095]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shopkeeper/Area2D" unique_id=1825095111]
+position = Vector2(-496.66672, -178.3334)
+shape = SubResource("RectangleShape2D_8fr72")
+
 [node name="Panel" type="Panel" parent="." unique_id=1281234219]
 layout_mode = 0
-offset_left = 440.0
+offset_left = 403.0
 offset_top = 8.0
-offset_right = 838.0
-offset_bottom = 130.0
-metadata/_edit_lock_ = true
+offset_right = 947.0
+offset_bottom = 200.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=2131460250]
 layout_mode = 0
-offset_right = 397.0
-offset_bottom = 50.0
+offset_right = 545.0
+offset_bottom = 189.0
 
 [node name="Description Name" type="Label" parent="Panel/VBoxContainer" unique_id=1010030188]
 layout_mode = 2
 text = "Name"
-label_settings = ExtResource("3_4wbwc")
+label_settings = SubResource("LabelSettings_3ek0b")
 
 [node name="Description Text" type="Label" parent="Panel/VBoxContainer" unique_id=933545156]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 text = "Description"
 label_settings = SubResource("LabelSettings_4wbwc")
@@ -104,3 +175,4 @@ layout_mode = 1
 [connection signal="mouse_entered" from="Buy Weapon Button" to="." method="_on_buy_weapon_button_mouse_entered"]
 [connection signal="mouse_exited" from="Buy Weapon Button" to="." method="_on_buy_weapon_button_mouse_exited"]
 [connection signal="pressed" from="Buy Weapon Button" to="." method="_on_buy_weapon_button_pressed"]
+[connection signal="input_event" from="Shopkeeper/Area2D" to="." method="_on_area_2d_input_event"]

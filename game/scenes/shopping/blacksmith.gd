@@ -8,6 +8,7 @@ extends Control
 @onready var panel: Panel = $Panel
 @onready var buy_ammo_panel: Control = $"Buy Ammo Panel"
 
+var is_talking : bool = false
 var purchasable_weapon : Gun
 
 signal switch_scene
@@ -15,6 +16,7 @@ signal switch_scene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_labels()
+	$Shopkeeper.play("idle")
 	replace_weapon_panel.hide()
 	buy_ammo_panel.hide()
 	purchasable_weapon = shopping_menu.for_sale_weapon
@@ -39,18 +41,20 @@ func update_labels() -> void:
 	money.text = "Cash: $%.2f" % GameController.money
 	description_text.text = ""
 	description_name.text = ""
+	description_text.visible_characters = -1
 
 func _on_buy_weapon_button_pressed() -> void:
-	if GameController.money >= shopping_menu.for_sale_weapon.price or true:
+	if GameController.money >= shopping_menu.for_sale_weapon.price:
 		if not GameController.secondary_gun:
 			print("Secondary does not exist")
 			GameController.secondary_gun = Gun.new(shopping_menu.for_sale_weapon.gun_name, shopping_menu.for_sale_weapon.damage, shopping_menu.for_sale_weapon.cap_ammo, shopping_menu.for_sale_weapon.max_ammo, shopping_menu.for_sale_weapon.mag_size, shopping_menu.for_sale_weapon.reload_time, shopping_menu.for_sale_weapon.fire_rate)
 		else:
 			replace_weapon_panel.show()
+		GameController.money -= shopping_menu.for_sale_weapon.price
 		update_labels()
 		$"Buy Weapon Button".queue_free()
 	else:
-		description_text.text = "Oi, you trying to fleece me? Bring the cash next time, or else you'll be the first thing this gun's shooting."
+		shopkeeper_dialogue("Oi, you trying to fleece me? Bring the cash next time, or else you'll be the first thing this gun's shooting.","talking","idle")
 		description_name.text = ""
 
 func _on_buy_weapon_button_mouse_entered() -> void:
@@ -60,10 +64,8 @@ func _on_buy_weapon_button_mouse_entered() -> void:
 		description_text.text = ""
 
 func _on_buy_weapon_button_mouse_exited() -> void:
-	panel.hide()
-	description_name.text = ""
-	description_text.text = ""
-
+	if not is_talking:
+		panel.hide()
 
 func _on_buy_ammo_button_mouse_entered() -> void:
 	panel.show()
@@ -72,3 +74,24 @@ func _on_buy_ammo_button_mouse_entered() -> void:
 		description_text.text += "\nSecondary Gun: %s Current Ammo: %d\nAmmo is purchasable: $%.2f for %d bullets." % [GameController.secondary_gun.gun_name, GameController.secondary_gun.max_ammo, GameController.secondary_gun.ammo_price, GameController.secondary_gun.ammo_purchase_amt]
 func _on_buy_ammo_button_mouse_exited() -> void:
 	panel.hide()
+
+func shopkeeper_dialogue(text : String, expression_talking : String, expression_idle : String) -> void:
+	is_talking = true
+	description_text.text = text
+	description_text.visible_characters = 0
+	$Panel.show()
+	$Shopkeeper.play(expression_talking)
+	for i in range(text.length()):
+		description_text.visible_characters += 1
+		await get_tree().create_timer(0.01).timeout
+	$Shopkeeper.play(expression_idle)
+	await get_tree().create_timer(2.5).timeout
+	is_talking = false
+	update_labels()
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action("Select"):
+		if not is_talking:
+			update_labels()
+			shopkeeper_dialogue("Test Dialogue","talking", "idle")

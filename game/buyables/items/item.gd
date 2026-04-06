@@ -25,13 +25,17 @@ func _init(c_item_name : String, c_item_type : String, c_item_desc : String, c_f
 	match c_item_type:
 		"ITEM":
 			item_type = Item_Type.ITEM
+			item_texture = load("res://icon.svg")
 		"SHOOTING":
 			item_type = Item_Type.SHOOTING
+			item_texture = load("res://game/sprites/gunitemicon.png")
 		"FISHING":
 			item_type = Item_Type.FISHING
+			item_texture = load("res://game/sprites/fishitemicon.png")
 		"VALUE":
 			item_type = Item_Type.VALUE
-		
+			item_texture = load("res://icon.svg")
+	
 	item_desc = c_item_desc
 	function_text = c_function_text
 	avg_price = c_price

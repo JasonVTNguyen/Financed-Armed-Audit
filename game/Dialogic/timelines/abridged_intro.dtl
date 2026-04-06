@@ -4,9 +4,11 @@ narrator: A young penguin named Bean was dozing off in his bed.
 narrator: Until suddenly...
 narrator: Bean was suddenly taken by the IRS!
 narrator: Apparently he'd been behind on his tax debts!
-narrator: Thankfully, mayor allowed him to handle his tax debt in installments. \
-[font_size=12]Why the hell is that even a thing?[/font_size]
-narrator: In order to pay off his debts, Bean decided to go fishing to pay off his debts.
-narrator: Unfortunately however, fishing around Iceberg Village can be pretty dangerous.
+narrator: Thankfully, the Mayor allowed him to handle his tax debt in installments. Something about being familiar with one of his relatives.\
+[pause=0.75][font_size=12]Nepotism goes crazy in Iceberg Village.[/font_size]
+narrator: In order to pay off his debts, Bean decided to go fishing in order to pay off his debts.
+narrator: In the past, his grandfather used to take Bean fishing, although that was a long time ago.
+narrator: Unfortunately nowadays, fishing around Iceberg Village can be pretty difficult. They were frankly too energetic to catch! [pause=0.75]\
+[font_size=12]Guess the fish discovered steroids or something.[/font_size]
 narrator: Thinking he was out of luck, he found something his grandpa left him.
 do GameController.start_game()

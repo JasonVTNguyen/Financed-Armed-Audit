@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c3seupm13sdwg"]
+
+[ext_resource type="Script" uid="uid://oce8h5jl7fq6" path="res://game/scenes/tutorials/tutorial_manager.gd" id="1_w4kd1"]
+[ext_resource type="PackedScene" uid="uid://di4xnmv1is0lc" path="res://game/scenes/tutorials/tutorial_screen.tscn" id="2_on0vl"]
+
+[node name="Tutorial Manager" type="Control" unique_id=1253394693]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w4kd1")
+
+[node name="Tutorial Screen" parent="." unique_id=1761142812 instance=ExtResource("2_on0vl")]
+layout_mode = 1
+
+[node name="Skip Tutorial Button" type="Button" parent="." unique_id=383600464]
+layout_mode = 0
+offset_left = 792.0
+offset_top = 584.0
+offset_right = 944.0
+offset_bottom = 624.0
+text = "Skip Tutorial"
+
+[node name="Previous Button" type="Button" parent="." unique_id=1376259498]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 584.0
+offset_right = 392.0
+offset_bottom = 624.0
+text = "Previous"
+
+[node name="Next Button" type="Button" parent="." unique_id=1546173311]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 584.0
+offset_right = 656.0
+offset_bottom = 624.0
+text = "Next"
+
+[connection signal="pressed" from="Previous Button" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="Next Button" to="." method="_on_next_button_pressed"]
