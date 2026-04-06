@@ -64,6 +64,7 @@ func _input(event: InputEvent) -> void:
 		if reload_timer.is_stopped() and switch_timer.is_stopped():
 			current_gun.fire_gun()
 	elif event.is_action_pressed("Reload"):
+		$ReloadSFX.play()
 		current_gun.reload_gun()
 		reload_time = current_gun.reload_time
 		reload_timer.start(current_gun.reload_time)
@@ -76,6 +77,7 @@ func _input(event: InputEvent) -> void:
 			$"HUD Elements/FireRate Bar".max_value = current_gun.fire_rate
 		print("Switch Weapons")
 		switch_timer.start(1)
+		$SwitchSFX.play()
 	update_labels()
 
 func target_dead():

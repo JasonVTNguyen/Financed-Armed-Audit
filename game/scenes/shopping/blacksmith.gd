@@ -54,8 +54,9 @@ func _on_buy_weapon_button_pressed() -> void:
 		update_labels()
 		$"Buy Weapon Button".queue_free()
 	else:
-		shopkeeper_dialogue("Oi, you trying to fleece me? Bring the cash next time, or else you'll be the first thing this gun's shooting.","talking","idle")
 		description_name.text = ""
+		shopkeeper_dialogue("Oi, you trying to fleece me? Bring the cash next time, or else you'll be the first thing this gun's shooting.","talking","idle")
+		
 
 func _on_buy_weapon_button_mouse_entered() -> void:
 	panel.show()

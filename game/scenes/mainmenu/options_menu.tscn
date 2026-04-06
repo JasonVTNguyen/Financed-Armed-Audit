@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ccb2q8wqxt6l7"]
+
+[ext_resource type="Script" uid="uid://dvpyfb6gewgn6" path="res://game/scenes/mainmenu/options_menu.gd" id="1_4hu5b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mjpfd"]
+font_size = 55
+
+[node name="Options Menu" type="Control" unique_id=484856768]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4hu5b")
+
+[node name="MenuButton" type="OptionButton" parent="." unique_id=1219685121]
+layout_mode = 0
+offset_left = 842.0
+offset_top = 195.0
+offset_right = 1040.0
+offset_bottom = 226.0
+selected = 0
+item_count = 2
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="." unique_id=969258644]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 76.0
+text = "Options"
+label_settings = SubResource("LabelSettings_mjpfd")
+horizontal_alignment = 1
+
+[node name="Back to Main Menu" type="Button" parent="." unique_id=28540930]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 575.0
+offset_right = 668.0
+offset_bottom = 610.0
+text = "Main Menu"
+
+[node name="Master Volume Slider" type="HSlider" parent="." unique_id=1221811148]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 424.0
+offset_right = 804.0
+offset_bottom = 440.0
+
+[connection signal="item_selected" from="MenuButton" to="." method="_on_menu_button_item_selected"]
+[connection signal="pressed" from="Back to Main Menu" to="." method="_on_back_to_main_menu_pressed"]
