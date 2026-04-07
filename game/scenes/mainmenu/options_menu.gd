@@ -3,9 +3,14 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	update_labels()
 
-
+func update_labels() -> void:
+	match DisplayServer.window_get_mode():
+		DisplayServer.WINDOW_MODE_FULLSCREEN:
+			$MenuButton.select(0)
+		DisplayServer.WINDOW_MODE_WINDOWED:
+			$MenuButton.select(1)
 
 func _on_menu_button_item_selected(index: int) -> void:
 	match index:

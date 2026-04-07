@@ -58,15 +58,18 @@ func _input(event: InputEvent) -> void:
 		if check_if_within_increment1(timing_offset):
 			print("Landed 1")
 			increments1 = 9000
+			$"Reeling SFX".play()
 			GameController.fishing_qte_score += 1
 		if GameController.current_rod.rod_tier > 0:
 			if check_if_within_increment2(timing_offset):
 				print("Landed 2")
 				GameController.fishing_qte_score += 1
+				$"Reeling SFX".play()
 				increments2 = 9000
 		if GameController.current_rod.rod_tier > 1:
 			if check_if_within_increment3(timing_offset):
 				print("Landed 3")
+				$"Reeling SFX".play()
 				GameController.fishing_qte_score += 1
 				increments3 = 9000
 

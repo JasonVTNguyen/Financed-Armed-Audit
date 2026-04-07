@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://yqph571u6cpw" path="res://game/scenes/shopping/blacksmith.tscn" id="2_b6u2u"]
 [ext_resource type="PackedScene" uid="uid://can0iqaqrn3fs" path="res://game/scenes/shopping/shop.tscn" id="3_ydbwc"]
 [ext_resource type="PackedScene" uid="uid://cnctdm4qoh7yt" path="res://game/scenes/gui/inventory.tscn" id="4_xejfy"]
+[ext_resource type="AudioStream" uid="uid://3citi6iqxen5" path="res://game/audio/music/Art_Break.ogg" id="5_b6u2u"]
 
 [node name="Shopping Menu" type="Control" unique_id=68397610]
 layout_mode = 3
@@ -31,6 +32,12 @@ text = "Inventory"
 
 [node name="Inventory" parent="." unique_id=441917759 instance=ExtResource("4_xejfy")]
 layout_mode = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=924920734]
+stream = ExtResource("5_b6u2u")
+volume_db = -32.5
+autoplay = true
+bus = &"Music"
 
 [connection signal="switch_scene" from="Blacksmith" to="." method="_on_blacksmith_switch_scene"]
 [connection signal="switch_scene" from="Shop" to="." method="_on_shop_switch_scene"]

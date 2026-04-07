@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bruylg7w1l1ib" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithtalking2.png" id="9_dcdrd"]
 [ext_resource type="Texture2D" uid="uid://cfrsn8oirxfo8" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithtalking3.png" id="10_yhxi3"]
 [ext_resource type="Texture2D" uid="uid://c6a7e4bru4ftx" path="res://game/sprites/shopkeeper/blacksmith/shopkeeperblacksmithtalking4.png" id="11_4pu6d"]
+[ext_resource type="AudioStream" uid="uid://l2i4f1xowt4m" path="res://game/audio/sfx/buy_item.mp3" id="11_8fr72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2h1f7"]
 font_size = 32
@@ -169,6 +170,11 @@ offset_bottom = 658.0
 [node name="Buy Ammo Panel" parent="." unique_id=83876699 instance=ExtResource("5_2eqhl")]
 visible = false
 layout_mode = 1
+
+[node name="Buy SFX" type="AudioStreamPlayer" parent="." unique_id=778853024]
+stream = ExtResource("11_8fr72")
+volume_db = -25.0
+bus = &"SFX"
 
 [connection signal="pressed" from="To Shop Button" to="." method="_on_to_shop_button_pressed"]
 [connection signal="mouse_entered" from="Buy Ammo Button" to="." method="_on_buy_ammo_button_mouse_entered"]

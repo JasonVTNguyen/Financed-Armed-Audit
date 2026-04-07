@@ -63,6 +63,7 @@ func _on_buy_bait_button_pressed() -> void:
 	if GameController.money >= bait_cost:
 		GameController.total_bait += 1
 		GameController.money -= bait_cost
+		$"Buy SFX".play()
 		item_name.text = "Bait Upgrade (Costs: $%.2f)" % bait_price_box.get(GameController.total_bait)
 		description.text = "Allows you to fish extra fish."
 		shopping_menu.has_bought_something = true
@@ -78,6 +79,7 @@ func buy_item_function(item : Item, cost : float) -> bool:
 		GameController.money -= cost
 		update_values()
 		shopkeeper_dialogue("Thank you for your purchase!","talking-normal","idle")
+		$"Buy SFX".play()
 		return true
 	else:
 		item_name.text = ""
@@ -89,7 +91,7 @@ func buy_item_function(item : Item, cost : float) -> bool:
 func update_values() -> void:
 	$Money.text = "Cash: $%.2f" % GameController.money
 	$"Start Next Round Button".text = "Next Installment\n$%.2f" % GameController.story_round_objectives.get(GameController.current_round)
-	if not shopping_menu.buyable_rod:
+	if not shopping_menu.buyable_rod and $"Upgrade Rod Button":
 		$"Upgrade Rod Button".queue_free()
 
 func set_item_icon(item) -> void:
@@ -153,7 +155,20 @@ func _on_buy_item_button_4_pressed() -> void:
 		$"Buy Item Button 4".queue_free()
 
 func _on_upgrade_rod_button_pressed() -> void:
-	pass
+	var rod_cost = Catalogue.rods.get(GameController.current_rod.rod_tier + 1).rod_price
+	if GameController.money >= rod_cost:
+		GameController.current_rod = Catalogue.rods.get(GameController.current_rod.rod_tier + 1)
+		GameController.money -= rod_cost
+		$"Buy SFX".play()
+		item_name.text = "%s (Costs: $%.2f)" % [shopping_menu.buyable_rod.rod_name,shopping_menu.buyable_rod.rod_price]
+		description.text = "An upgrade to the fishing rod."
+		function_description.text = "Buying better fishing rods can let you get more damage from the hook."
+		shopping_menu.has_bought_something = true
+	else:
+		item_name.text = ""
+		shopkeeper_dialogue("Nice try, stupid. Bring enough money next time.","talking-mad","idle-mad")
+		function_description.text = ""
+	update_values()
 
 
 func _on_upgrade_rod_button_mouse_entered() -> void:
@@ -163,6 +178,14 @@ func _on_upgrade_rod_button_mouse_entered() -> void:
 	function_description.text = "Buying better fishing rods can let you get more damage from the hook."
 
 func clear_description() -> void:
+	if not is_talking:
+		item_name.text = ""
+		description.text = ""
+		function_description.text = ""
+		$Panel.hide()
+		description.visible_characters = -1
+
+func force_clear_description() -> void:
 	if not is_talking:
 		item_name.text = ""
 		description.text = ""
@@ -180,9 +203,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		
 
 func shopkeeper_dialogue(text : String, expression_talking : String, expression_idle : String) -> void:
+	clear_description()
 	is_talking = true
 	description.text = text
 	description.visible_characters = 0
+	
 	$Panel.show()
 	$Shopkeeper.play(expression_talking)
 	for i in range(text.length()):

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnctdm4qoh7yt"]
 
 [ext_resource type="Script" uid="uid://dr5ykvpx7yvvd" path="res://game/scenes/shopping/inventory.gd" id="1_jfhyk"]
+[ext_resource type="Texture2D" uid="uid://bx7tb8i7loedq" path="res://game/sprites/shopkeeper/shop/baiticon.png" id="2_3qhed"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keejj"]
 bg_color = Color(0.11489678, 0.11489683, 0.11489671, 1)
@@ -15,6 +16,9 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_keejj"]
+font_size = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfhyk"]
 bg_color = Color(0.38039216, 0.6862745, 0.3019608, 0.49411765)
@@ -59,13 +63,41 @@ offset_bottom = 648.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_keejj")
 
-[node name="Panel2" type="Panel" parent="Panel" unique_id=657474469]
+[node name="Fishing Stuff" type="Panel" parent="Panel" unique_id=657474469]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 176.0
 offset_right = 136.0
 offset_bottom = 368.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jtw1s")
+
+[node name="Current Rod" type="Label" parent="Panel/Fishing Stuff" unique_id=964994537]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 48.0
+text = "Rod"
+
+[node name="Bait Count" type="Label" parent="Panel/Fishing Stuff" unique_id=352399935]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 144.0
+offset_right = 128.0
+offset_bottom = 192.0
+text = "Bait"
+label_settings = SubResource("LabelSettings_keejj")
+vertical_alignment = 1
+
+[node name="Current Hook" type="Label" parent="Panel/Fishing Stuff" unique_id=1332163888]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 128.0
+offset_bottom = 144.0
+text = "Hook"
+
+[node name="Baiticon" type="Sprite2D" parent="Panel/Fishing Stuff" unique_id=1497545278]
+position = Vector2(17.999992, 167.00003)
+scale = Vector2(0.3125, 0.35714287)
+texture = ExtResource("2_3qhed")
 
 [node name="Primary Weapon Box" type="PanelContainer" parent="Panel" unique_id=1548207852]
 layout_mode = 0

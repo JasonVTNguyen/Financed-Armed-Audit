@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cedcnqswnha5r" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad2.png" id="8_byvty"]
 [ext_resource type="Texture2D" uid="uid://f5waoibx3eu4" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad3.png" id="9_7sivm"]
 [ext_resource type="Texture2D" uid="uid://ca88wai1mbnhb" path="res://game/sprites/shopkeeper/shop/shopkeepershopmad4.png" id="10_iqymf"]
+[ext_resource type="AudioStream" uid="uid://l2i4f1xowt4m" path="res://game/audio/sfx/buy_item.mp3" id="14_byvty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gcpnk"]
 font_size = 30
@@ -362,6 +363,11 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shopkeeper/Area2D" unique_id=1701796233]
 position = Vector2(-0.00036621094, -222.62173)
 shape = SubResource("RectangleShape2D_qel77")
+
+[node name="Buy SFX" type="AudioStreamPlayer" parent="." unique_id=1999093466]
+stream = ExtResource("14_byvty")
+volume_db = -25.0
+bus = &"SFX"
 
 [connection signal="pressed" from="Start Next Round Button" to="." method="_on_start_next_round_button_pressed"]
 [connection signal="pressed" from="Blacksmith Button" to="." method="_on_blacksmith_button_pressed"]

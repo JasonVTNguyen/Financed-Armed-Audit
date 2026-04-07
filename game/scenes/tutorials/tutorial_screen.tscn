@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://bir474l1bpy4u" path="res://game/scenes/tutorials/tutorial_screen.gd" id="1_u643q"]
 [ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="2_hao0a"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adqqp"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.5372549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hao0a"]
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_adqqp"]
 font_size = 30
 
@@ -18,12 +24,19 @@ tutorial_title = NodePath("Panel/Tutorial Title")
 tutorial_text = NodePath("Panel/Tutorial Text")
 tutorial_image = NodePath("Panel/Tutorial Image")
 
+[node name="Panel2" type="Panel" parent="." unique_id=74969360]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_adqqp")
+
 [node name="Panel" type="Panel" parent="." unique_id=1431153690]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 64.0
 offset_right = 960.0
 offset_bottom = 630.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hao0a")
 
 [node name="Tutorial Title" type="Label" parent="Panel" unique_id=292154170]
 layout_mode = 0

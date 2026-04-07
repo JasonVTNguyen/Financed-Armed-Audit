@@ -12,7 +12,7 @@ var rounds_fish_caught : Array[Fish] = []
 var money_at_beginning : float = 0.0
 var number_of_shots : int = 0
 var fishing_qte_score : float
-
+var tutorial_on : bool = true
 
 var current_bait : int = 3
 var primary_gun : Gun
@@ -50,7 +50,7 @@ func reset_game():
 	inventory = Inventory.new()
 	currentFish = Fish.new()
 	total_value = 0.0
-	money = 0.0
+	money = 9990.0
 	total_bait = 3
 	current_bait = 3
 	current_round = 0
@@ -63,7 +63,11 @@ func reset_game():
 	rounds_fish_caught = []
 	money_at_beginning = 0.0
 	number_of_shots = 0
+	tutorial_on = true
 	
 func start_game():
 	reset_game()
 	get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")
+
+func play_bgm(bgm):
+	$"BGM Test".play()

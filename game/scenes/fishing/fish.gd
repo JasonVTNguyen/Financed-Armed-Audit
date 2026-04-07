@@ -51,12 +51,14 @@ func _physics_process(delta: float) -> void:
 			if self.position == target_destination:
 				#print("Arrived")
 				set_new_target_destination()
+				await get_tree().create_timer(0.25).timeout
 		State.ATTRACT:
 			if self.position == target_destination:
 				fishing_scene.makeFish(self)
 		State.STOP:
 			velocity = Vector2.ZERO
 			move_and_slide()
+	
 	self.position = self.position.move_toward(target_destination, 25 * delta)
 	#print("Position: " + str(position))
 	#print(ray_cast_2d.is_colliding())

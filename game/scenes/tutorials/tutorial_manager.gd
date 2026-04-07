@@ -31,8 +31,10 @@ func update_buttons() -> void:
 		$"Previous Button".show()
 	if current_scene_id == len(current_tutorial_deck) - 1:
 		$"Next Button".hide()
+		$"Skip Tutorial Button".text = "Close Tutorial"
 	else:
 		$"Next Button".show()
+		$"Skip Tutorial Button".text = "Skip Tutorial"
 
 
 func _on_next_button_pressed() -> void:
@@ -44,3 +46,8 @@ func _on_previous_button_pressed() -> void:
 	current_scene_id -= 1
 	update_tutorials()
 	update_buttons()
+
+
+func _on_skip_tutorial_button_pressed() -> void:
+	GameController.tutorial_on = false
+	queue_free()

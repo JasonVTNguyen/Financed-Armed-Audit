@@ -72,11 +72,13 @@ func reload_calculation() -> int:
 	else:
 		return max_ammo
 
-func fire_gun():
+func fire_gun() -> bool:
 	if check_can_fire_gun():
 		#print("Gunshot Particles: " + str(gunshot_particles))
 		#print("Sprite: " + str($Sprite2D))
 		cur_ammo -= 1
+		return true
+	return false
 	
 func reload_gun() -> void:
 	var give_ammo = reload_calculation()

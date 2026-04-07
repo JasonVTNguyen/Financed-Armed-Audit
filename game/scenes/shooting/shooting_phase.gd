@@ -27,7 +27,10 @@ var hold_timer : float = 0
 
 func _ready() -> void:
 	print("Shooting Test: "+ str(GameController.currentFish))
-	new_target = Target_Fish.new(GameController.currentFish.health)
+	$WaterSFX.play()
+	new_target = Target_Fish.new(GameController.currentFish.health, "res://game/sprites/fishing/Fish/fish.png")
+	$"Target Fish".change_sprite("res://game/sprites/fishing/Fish/fish.png")
+
 	health_bar.max_value = new_target.target_max_health
 	health_bar.value = new_target.target_max_health
 	current_gun = GameController.primary_gun
@@ -51,18 +54,18 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
-		GameController.number_of_shots += 1
 		if GameController.gun_state == GameController.GunState.HIT and reload_timer.is_stopped() and switch_timer.is_stopped():
 			if update_damage():
 				
 				#self.add_child(gunshot_particles)
 				gunshot_particles.emitting = false
 				gunshot_particles.position = $Gun.position
-				
 				gunshot_particles.emitting = true
 				$"Target Fish".target_hit()
 		if reload_timer.is_stopped() and switch_timer.is_stopped():
-			current_gun.fire_gun()
+			if current_gun.fire_gun():
+				GameController.number_of_shots += 1
+				$ShootSFX.play()
 	elif event.is_action_pressed("Reload"):
 		$ReloadSFX.play()
 		current_gun.reload_gun()
@@ -81,6 +84,7 @@ func _input(event: InputEvent) -> void:
 	update_labels()
 
 func target_dead():
+	$ShootSFX.play()
 	var value : float = GameController.currentFish.value
 	for item : Item in GameController.inventory.items:
 		if item.item_type == Item.Item_Type.FISHING:

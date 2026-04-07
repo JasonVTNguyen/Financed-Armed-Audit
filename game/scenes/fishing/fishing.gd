@@ -2,6 +2,8 @@ extends Node2D
 
 var fish_scene : PackedScene = preload("res://game/scenes/fishing/fish.tscn")
 var fishing_qte : PackedScene = preload("res://game/scenes/fishing/fishing_qte.tscn")
+var tutorial : PackedScene = preload("res://game/scenes/tutorials/tutorial_manager.tscn")
+
 @onready var inventory: Inventory = $Inventory
 
 var inv_opened : bool = false
@@ -20,13 +22,17 @@ var is_qte : bool = false
 func _ready() -> void:
 	#print("Fishing Scene Ready")
 	$"Bait Count".text = "x %d" % GameController.current_bait
-	$"Total Value".text = "%.2f" % GameController.money
-	$"Required Weight Total".text = "%.2f" % GameController.story_round_objectives.get(GameController.current_round)
-	
+	$"Total Value".text = "$%.2f" % GameController.money
+	$BGM.play()
+	print(auto_scientific(GameController.money))
+	var auto_sci_objective = auto_scientific(GameController.story_round_objectives.get(GameController.current_round))
+	$"Required Total".text = "/ $" + auto_sci_objective
 	for i in range(5):
 		spawn_fish()
 	GameController.fishing_qte_score = 0
 	is_qte = false
+	if GameController.tutorial_on:
+		add_child(tutorial.instantiate())
 	
 func _process(delta: float) -> void:
 	pass
@@ -55,11 +61,12 @@ func makeFish(fish):
 		is_qte = true
 
 func check_if_can_place_bobber() -> bool:
-	match mouse_state:
-		MouseState.IN:
-			return true
-		MouseState.OUT:
-			return false
+	if not inv_opened:
+		match mouse_state:
+			MouseState.IN:
+				return true
+			MouseState.OUT:
+				return false
 	return false
 
 func set_bobber(bobber_pos) -> void:
@@ -80,7 +87,7 @@ func _on_open_inventory_button_pressed() -> void:
 		print(GameController.inventory.items)
 		inventory.update_labels()
 		inventory.show()
-		inv_opened = true
+	inv_opened = true
 
 func _on_inventory_close_inventory() -> void:
 	inventory.hide()
@@ -93,3 +100,11 @@ func _on_lake_boundaries_mouse_entered() -> void:
 
 func _on_lake_boundaries_mouse_exited() -> void:
 	mouse_state = MouseState.IN
+
+func auto_scientific(number : float) -> String:
+	var tens = log(number) / log(10)
+	if tens >= 3 and tens < 6:
+		return str(number/1000.0) + "K"
+	elif tens >= 6:
+		return str(number/1000000.0) + "M"
+	return str(number)

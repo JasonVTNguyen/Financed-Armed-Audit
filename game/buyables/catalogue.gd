@@ -10,7 +10,7 @@ var items : Dictionary[int, Item] = {
 var weapons : Dictionary[int, Gun] = {
 				# Name, Description, Icon, Damage, Capacity, Max Ammo, Mag Size, Reload Time, Fire Rate, Price, Ammo Price, Ammo Purchase Amount
 	0 : Gun.new("Pistol","This is your run of the mill firearm.","res://icon.svg", 5, 5000, 50, 10, 1.0, 15.0, 200.0, 15.0, 25),
-	1 : Gun.new("Shotgun","This is a stronger gun in exchange for it's slower reload","res://icon.svg", 15, 500, 20, 10, 1.0, 15.0, 750.0, 50.0, 15),
+	1 : Gun.new("Shotgun","This is a stronger gun in exchange for it's slower reload","res://icon.svg", 15, 500, 20, 5, 1.0, 15.0, 750.0, 50.0, 15),
 	2 : Gun.new("Sniper","Really strong gun, really low ammo reserves","res://icon.svg", 50, 150, 5, 5, 1.0, 15.0, 2000.0, 100.0, 5),
 }
 

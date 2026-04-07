@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c4btywvs0dplv" path="res://game/scenes/fishing/fishing.gd" id="1_1mg86"]
 [ext_resource type="PackedScene" uid="uid://cu6abksrs4xpo" path="res://game/scenes/fishing/bobber.tscn" id="4_n7eig"]
+[ext_resource type="Texture2D" uid="uid://b5ucoyo4vjjw0" path="res://game/bg/scoreboard.png" id="4_qbdcm"]
 [ext_resource type="Texture2D" uid="uid://c2xdvha6suij8" path="res://icon.svg" id="5_f6nhs"]
 [ext_resource type="Texture2D" uid="uid://bsigi13tsl8o6" path="res://game/bg/lakebg.png" id="5_n7eig"]
 [ext_resource type="Texture2D" uid="uid://bx7tb8i7loedq" path="res://game/sprites/shopkeeper/shop/baiticon.png" id="6_f6nhs"]
 [ext_resource type="Script" uid="uid://7k0ss52vhvmq" path="res://game/scenes/fishing/fish_dictionary.gd" id="7_j3aex"]
 [ext_resource type="PackedScene" uid="uid://cnctdm4qoh7yt" path="res://game/scenes/gui/inventory.tscn" id="7_qbdcm"]
+[ext_resource type="AudioStream" uid="uid://chkwx53ttjeh" path="res://game/audio/music/くるくるバルーン.ogg" id="9_4pvs4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6nhs"]
 size = Vector2(1199, 222)
@@ -31,10 +33,15 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(344, 96, 504, 64, 688, 
 script = ExtResource("1_1mg86")
 
 [node name="Lakebg" type="Sprite2D" parent="." unique_id=253587682]
+z_index = -20
 position = Vector2(576, 324)
 scale = Vector2(0.72, 0.53999996)
 texture = ExtResource("5_n7eig")
 metadata/_edit_lock_ = true
+
+[node name="Bobber" parent="." unique_id=1580847433 instance=ExtResource("4_n7eig")]
+z_index = 2
+position = Vector2(-207.99998, 136.00002)
 
 [node name="Lake Boundaries" type="StaticBody2D" parent="." unique_id=1016460496]
 collision_layer = 8
@@ -61,6 +68,12 @@ shape = SubResource("RectangleShape2D_f6nhs")
 position = Vector2(58, 573)
 texture = ExtResource("6_f6nhs")
 
+[node name="Scoreboard" type="Sprite2D" parent="." unique_id=990144345]
+z_index = 4
+position = Vector2(1029, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_qbdcm")
+
 [node name="Bait Count" type="Label" parent="." unique_id=1535396836]
 offset_left = 104.0
 offset_top = 549.0
@@ -70,23 +83,22 @@ text = "Total Bait"
 label_settings = SubResource("LabelSettings_i263x")
 
 [node name="Total Value" type="Label" parent="." unique_id=465480026]
-offset_left = 928.0
-offset_top = 8.0
-offset_right = 1016.0
-offset_bottom = 42.0
-text = "Weight"
+z_index = 4
+offset_left = 914.0
+offset_top = 19.0
+offset_right = 1002.0
+offset_bottom = 53.0
+text = "Money"
 label_settings = SubResource("LabelSettings_n7eig")
 
-[node name="Required Weight Total" type="Label" parent="." unique_id=680729554]
-offset_left = 1040.0
-offset_top = 16.0
-offset_right = 1112.0
-offset_bottom = 40.0
+[node name="Required Total" type="Label" parent="." unique_id=680729554]
+z_index = 4
+offset_left = 1072.0
+offset_top = 22.0
+offset_right = 1144.0
+offset_bottom = 46.0
 text = "Required"
 label_settings = SubResource("LabelSettings_f6nhs")
-
-[node name="Bobber" parent="." unique_id=1580847433 instance=ExtResource("4_n7eig")]
-position = Vector2(-207.99998, 136.00002)
 
 [node name="BiteTimer" type="Timer" parent="." unique_id=1723208164]
 
@@ -118,7 +130,11 @@ text = "Inventory"
 
 [node name="Inventory" parent="." unique_id=441917759 instance=ExtResource("7_qbdcm")]
 visible = false
-z_index = 4
+z_index = 5
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1780456317]
+stream = ExtResource("9_4pvs4")
+bus = &"Music"
 
 [connection signal="mouse_entered" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_entered"]
 [connection signal="mouse_exited" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_exited"]

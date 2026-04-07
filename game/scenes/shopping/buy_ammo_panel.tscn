@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bk6sggpq6shqv"]
 
 [ext_resource type="Script" uid="uid://dvf2tny1du87w" path="res://game/scenes/shopping/buy_ammo_panel.gd" id="1_3pv5c"]
+[ext_resource type="AudioStream" uid="uid://l2i4f1xowt4m" path="res://game/audio/sfx/buy_item.mp3" id="2_b62if"]
 
 [node name="Buy Ammo Panel" type="Control" unique_id=83876699]
 layout_mode = 3
@@ -11,34 +12,89 @@ script = ExtResource("1_3pv5c")
 
 [node name="Panel" type="Panel" parent="." unique_id=561315192]
 layout_mode = 0
-offset_left = 344.0
-offset_top = 240.0
-offset_right = 800.0
-offset_bottom = 400.0
+offset_left = 248.0
+offset_top = 120.0
+offset_right = 904.0
+offset_bottom = 456.0
 
-[node name="Label" type="Label" parent="Panel" unique_id=319894862]
+[node name="Prompt Text" type="Label" parent="Panel" unique_id=319894862]
 layout_mode = 0
 offset_top = 8.0
-offset_right = 456.0
+offset_right = 656.0
 offset_bottom = 31.0
 text = "Which weapon do you want to buy ammo for?"
 horizontal_alignment = 1
 
 [node name="Primary Ammo Button" type="Button" parent="Panel" unique_id=601445569]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 104.0
-offset_right = 144.0
-offset_bottom = 144.0
-text = "Primary"
+offset_left = 24.0
+offset_top = 88.0
+offset_right = 632.0
+offset_bottom = 176.0
+
+[node name="Primary Gun Name" type="Label" parent="Panel/Primary Ammo Button" unique_id=1247871299]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 208.0
+offset_bottom = 88.0
+text = "Primary Gun Name"
+vertical_alignment = 1
+
+[node name="Primary Ammo" type="Label" parent="Panel/Primary Ammo Button" unique_id=372029929]
+layout_mode = 0
+offset_left = 264.0
+offset_right = 576.0
+offset_bottom = 88.0
+text = "Primary Ammo"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Secondary Ammo Button" type="Button" parent="Panel" unique_id=1218801230]
 layout_mode = 0
-offset_left = 312.0
-offset_top = 104.0
-offset_right = 424.0
-offset_bottom = 144.0
-text = "Secondary"
+offset_left = 24.0
+offset_top = 192.0
+offset_right = 632.0
+offset_bottom = 280.0
 
+[node name="Secondary Gun Name" type="Label" parent="Panel/Secondary Ammo Button" unique_id=1357268770]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 208.0
+offset_bottom = 88.0
+text = "Secondary Gun Name"
+vertical_alignment = 1
+
+[node name="Secondary Ammo" type="Label" parent="Panel/Secondary Ammo Button" unique_id=996108473]
+layout_mode = 0
+offset_left = 264.0
+offset_right = 576.0
+offset_bottom = 88.0
+text = "Secondary Ammo"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Panel" unique_id=283939497]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 632.0
+offset_bottom = 80.0
+
+[node name="Cancel Button" type="Button" parent="Panel" unique_id=1875240548]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 296.0
+offset_right = 392.0
+offset_bottom = 327.0
+text = "Cancel"
+
+[node name="Buy SFX" type="AudioStreamPlayer" parent="." unique_id=51892371]
+stream = ExtResource("2_b62if")
+
+[connection signal="mouse_entered" from="Panel/Primary Ammo Button" to="." method="_on_primary_ammo_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Primary Ammo Button" to="." method="clear_description"]
 [connection signal="pressed" from="Panel/Primary Ammo Button" to="." method="_on_primary_ammo_button_pressed"]
+[connection signal="mouse_entered" from="Panel/Secondary Ammo Button" to="." method="_on_secondary_ammo_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Secondary Ammo Button" to="." method="clear_description"]
 [connection signal="pressed" from="Panel/Secondary Ammo Button" to="." method="_on_secondary_ammo_button_pressed"]
+[connection signal="pressed" from="Panel/Cancel Button" to="." method="_on_cancel_button_pressed"]

@@ -33,17 +33,12 @@ func _ready() -> void:
 	
 	has_bought_something = false
 	
-	if GameController.current_rod == Catalogue.rods.get(0):
-		buyable_rod = Catalogue.rods.get(1)
-	elif GameController.current_rod == Catalogue.rods.get(1):
-		buyable_rod = Catalogue.rods.get(2)
-	else:
-		buyable_rod = null
+	check_buyables()
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	check_buyables()
 
 func _on_shop_switch_scene() -> void:
 	blacksmith.show()
@@ -65,3 +60,11 @@ func _on_inventory_close_inventory() -> void:
 
 func flucuate_costs(cost : float) -> float:
 	return round(randf_range(cost * .95, cost * 1.05))
+	
+func check_buyables() -> void:
+	if GameController.current_rod == Catalogue.rods.get(0):
+		buyable_rod = Catalogue.rods.get(1)
+	elif GameController.current_rod == Catalogue.rods.get(1):
+		buyable_rod = Catalogue.rods.get(2)
+	else:
+		buyable_rod = null

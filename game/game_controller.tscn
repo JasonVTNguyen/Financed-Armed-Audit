@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://cf3oq2s84dj7" path="res://game/game_controller.gd" id="1_5517d"]
 [ext_resource type="PackedScene" uid="uid://nv47b8t8jyrt" path="res://game/scenes/fishing/fishing.tscn" id="2_eb65f"]
 [ext_resource type="PackedScene" uid="uid://3wvgqfduwqwm" path="res://game/scenes/mainmenu/main_menu.tscn" id="3_5517d"]
-[ext_resource type="PackedScene" uid="uid://dp8lw1vlig7yk" path="res://game/scenes/fishing/results_screen.tscn" id="4_mob56"]
+[ext_resource type="PackedScene" uid="uid://dp8lw1vlig7yk" path="res://game/scenes/results/results_screen.tscn" id="4_mob56"]
+[ext_resource type="AudioStream" uid="uid://chkwx53ttjeh" path="res://game/audio/music/くるくるバルーン.ogg" id="6_4kcpm"]
 
 [node name="GameController" type="Node" unique_id=1936100560]
 script = ExtResource("1_5517d")
@@ -16,3 +17,6 @@ script = ExtResource("1_5517d")
 [node name="Results Screen" parent="." unique_id=319090414 instance=ExtResource("4_mob56")]
 
 [node name="Main Menu" parent="." unique_id=181896395 instance=ExtResource("3_5517d")]
+
+[node name="BGM Test" type="AudioStreamPlayer" parent="." unique_id=1025238936]
+stream = ExtResource("6_4kcpm")

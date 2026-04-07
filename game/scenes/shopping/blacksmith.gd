@@ -26,13 +26,13 @@ func _on_to_shop_button_pressed() -> void:
 
 func _on_buy_ammo_button_pressed() -> void:
 	if not GameController.secondary_gun:
-			if GameController.money >= GameController.primary_gun.ammo_price:
-				print("Secondary Gun does not exist.")
-				GameController.primary_gun.add_to_ammo_capacity(GameController.primary_gun.ammo_purchase_amt)
-				GameController.money -= GameController.primary_gun.ammo_price
+		if GameController.money >= GameController.primary_gun.ammo_price:
+			print("Secondary Gun does not exist.")
+			GameController.primary_gun.add_to_ammo_capacity(GameController.primary_gun.ammo_purchase_amt)
+			GameController.money -= GameController.primary_gun.ammo_price
+			$"Buy SFX".show()
 	else:
 		buy_ammo_panel.show()
-	
 		
 	update_labels()
 
@@ -51,6 +51,7 @@ func _on_buy_weapon_button_pressed() -> void:
 		else:
 			replace_weapon_panel.show()
 		GameController.money -= shopping_menu.for_sale_weapon.price
+		$"Buy SFX".play()
 		update_labels()
 		$"Buy Weapon Button".queue_free()
 	else:
@@ -70,6 +71,7 @@ func _on_buy_weapon_button_mouse_exited() -> void:
 
 func _on_buy_ammo_button_mouse_entered() -> void:
 	panel.show()
+	description_name.text = ""
 	description_text.text = "Primary Gun: %s Current Ammo: %d\nAmmo is purchasable: $%.2f for %d bullets." % [GameController.primary_gun.gun_name, GameController.primary_gun.max_ammo, GameController.primary_gun.ammo_price, GameController.primary_gun.ammo_purchase_amt]
 	if GameController.secondary_gun:
 		description_text.text += "\nSecondary Gun: %s Current Ammo: %d\nAmmo is purchasable: $%.2f for %d bullets." % [GameController.secondary_gun.gun_name, GameController.secondary_gun.max_ammo, GameController.secondary_gun.ammo_price, GameController.secondary_gun.ammo_purchase_amt]

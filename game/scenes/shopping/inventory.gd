@@ -50,6 +50,8 @@ func update_labels() -> void:
 		$"Panel/Secondary Weapon Box/VBoxContainer/Secondary Gun".text = str(GameController.secondary_gun.gun_name)
 		$"Panel/Secondary Weapon Box/VBoxContainer/Secondary Ammo".text = str(GameController.secondary_gun.cur_ammo) + " / " + str(GameController.secondary_gun.max_ammo)
 
+	$"Panel/Fishing Stuff/Bait Count".text = "Total Bait: x%d" % GameController.total_bait
+
 func _on_primary_weapon_box_mouse_entered() -> void:
 	description_label.text = str(GameController.primary_gun.gun_desc)
 	name_label.text = str(GameController.primary_gun.gun_name)
