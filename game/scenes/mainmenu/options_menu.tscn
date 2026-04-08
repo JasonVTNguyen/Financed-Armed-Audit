@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://ccb2q8wqxt6l7"]
 
 [ext_resource type="Script" uid="uid://dvpyfb6gewgn6" path="res://game/scenes/mainmenu/options_menu.gd" id="1_4hu5b"]
+[ext_resource type="PackedScene" uid="uid://3xvgpoy6a72t" path="res://game/scenes/mainmenu/volume_slider.tscn" id="2_fjnqt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4hu5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mjpfd"]
 font_size = 55
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fjnqt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l4pc8"]
+font_size = 23
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Options Menu" type="Control" unique_id=484856768]
 layout_mode = 3
@@ -14,12 +26,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4hu5b")
 
-[node name="MenuButton" type="OptionButton" parent="." unique_id=1219685121]
+[node name="HSplitContainer" type="HBoxContainer" parent="." unique_id=344787786]
 layout_mode = 0
-offset_left = 842.0
-offset_top = 195.0
-offset_right = 1040.0
-offset_bottom = 226.0
+offset_left = 445.0
+offset_top = 200.0
+offset_right = 720.0
+offset_bottom = 259.0
+theme_override_constants/separation = 53
+
+[node name="Label" type="Label" parent="HSplitContainer" unique_id=1750961081]
+layout_mode = 2
+text = "Display Mode"
+label_settings = SubResource("LabelSettings_4hu5b")
+horizontal_alignment = 1
+
+[node name="MenuButton" type="OptionButton" parent="HSplitContainer" unique_id=1219685121]
+layout_mode = 2
 selected = 0
 item_count = 2
 popup/item_0/text = "Full Screen"
@@ -27,10 +49,11 @@ popup/item_0/id = 0
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 
-[node name="Label" type="Label" parent="." unique_id=969258644]
+[node name="Title" type="Label" parent="." unique_id=969258644]
 layout_mode = 0
+offset_top = 8.0
 offset_right = 1152.0
-offset_bottom = 76.0
+offset_bottom = 84.0
 text = "Options"
 label_settings = SubResource("LabelSettings_mjpfd")
 horizontal_alignment = 1
@@ -43,12 +66,61 @@ offset_right = 668.0
 offset_bottom = 610.0
 text = "Main Menu"
 
-[node name="Master Volume Slider" type="HSlider" parent="." unique_id=1221811148]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=920674535]
 layout_mode = 0
-offset_left = 365.0
-offset_top = 424.0
-offset_right = 804.0
-offset_bottom = 440.0
+offset_left = 261.0
+offset_top = 345.0
+offset_right = 893.0
+offset_bottom = 482.0
 
-[connection signal="item_selected" from="MenuButton" to="." method="_on_menu_button_item_selected"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=22475034]
+layout_mode = 2
+text = "Master"
+label_settings = SubResource("LabelSettings_fjnqt")
+horizontal_alignment = 1
+
+[node name="Master Volume Slider" parent="VBoxContainer" unique_id=1481902988 instance=ExtResource("2_fjnqt")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=782590602]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_fjnqt")
+horizontal_alignment = 1
+
+[node name="Music Volume Slider" parent="VBoxContainer" unique_id=1330839910 instance=ExtResource("2_fjnqt")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=2076287282]
+layout_mode = 2
+text = "Sound Effects"
+label_settings = SubResource("LabelSettings_fjnqt")
+horizontal_alignment = 1
+
+[node name="SFX Volume Slider" parent="VBoxContainer" unique_id=538386806 instance=ExtResource("2_fjnqt")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="Video Settings Label" type="Label" parent="." unique_id=1886379448]
+layout_mode = 0
+offset_top = 157.0
+offset_right = 1152.0
+offset_bottom = 189.0
+rotation = 0.00052684837
+text = "Video Settings"
+label_settings = SubResource("LabelSettings_l4pc8")
+horizontal_alignment = 1
+
+[node name="Video Settings Label2" type="Label" parent="." unique_id=1013048351]
+layout_mode = 0
+offset_top = 276.0
+offset_right = 1152.0
+offset_bottom = 308.0
+text = "Audio Settings"
+label_settings = SubResource("LabelSettings_l4pc8")
+horizontal_alignment = 1
+
+[connection signal="item_selected" from="HSplitContainer/MenuButton" to="." method="_on_menu_button_item_selected"]
 [connection signal="pressed" from="Back to Main Menu" to="." method="_on_back_to_main_menu_pressed"]

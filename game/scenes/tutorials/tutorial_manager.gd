@@ -15,7 +15,11 @@ func set_tutorial_deck(deck : String) -> void:
 	match deck:
 		"BeginningTutorial":
 			current_tutorial_deck = TutorialCatalogue.tutorial_beginning
+		"ShoppingTutorial":
+			current_tutorial_deck = TutorialCatalogue.tutorial_shopping
 	current_scene_id = 0
+	update_buttons()
+	update_tutorials()
 
 func update_tutorials() -> void:
 	var title = TutorialCatalogue.tutorials.get(current_tutorial_deck[current_scene_id]).tutorial_title_str
@@ -49,5 +53,9 @@ func _on_previous_button_pressed() -> void:
 
 
 func _on_skip_tutorial_button_pressed() -> void:
-	GameController.tutorial_on = false
+	match current_tutorial_deck:
+		TutorialCatalogue.tutorial_beginning:
+			GameController.tutorial_on = GameController.TutorialState.SHOPPING
+		TutorialCatalogue.tutorial_shopping:
+			GameController.tutorial_on = GameController.TutorialState.DONE
 	queue_free()

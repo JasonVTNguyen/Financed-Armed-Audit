@@ -1,14 +1,23 @@
 [style name="FAA Style"]
+[background arg="res://game/Dialogic/images/icebergvillage.png" fade="0.5" wait="true"]
+audio music "res://game/audio/music/green-rain.ogg" [loop="true"]
 narrator: It was a sunny day in Iceberg Village.
+[background arg="res://game/Dialogic/images/beansleep.png" fade="0.5" wait="true"]
 narrator: A young penguin named Bean was dozing off in his bed.
 narrator: Until suddenly...
+[background arg="res://game/Dialogic/images/beanirs.png" fade="0.5" wait="true"]
 narrator: Bean was suddenly taken by the IRS!
+[background arg="res://game/Dialogic/images/mayor.png" fade="0.5" wait="true"]
 narrator: Apparently he'd been behind on his tax debts!
 narrator: Thankfully, the Mayor allowed him to handle his tax debt in installments. Something about being familiar with one of his relatives.\
 [pause=0.75][font_size=12]Nepotism goes crazy in Iceberg Village.[/font_size]
+[background arg="res://game/Dialogic/images/beanfishing.png" fade="0.5" wait="true"]
 narrator: In order to pay off his debts, Bean decided to go fishing in order to pay off his debts.
+[background arg="res://game/Dialogic/images/beanfishing2.png" fade="0.5" wait="true"]
 narrator: In the past, his grandfather used to take Bean fishing, although that was a long time ago.
+[background arg="res://game/Dialogic/images/hyperfish.png" fade="0.5" wait="true"]
 narrator: Unfortunately nowadays, fishing around Iceberg Village can be pretty difficult. They were frankly too energetic to catch! [pause=0.75]\
 [font_size=12]Guess the fish discovered steroids or something.[/font_size]
+[background arg="res://game/Dialogic/images/grandpanote.png" fade="0.5" wait="true"]
 narrator: Thinking he was out of luck, he found something his grandpa left him.
 do GameController.start_game()

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ddcbk82466fno"]
+
+[ext_resource type="Script" uid="uid://dfhw4pnd0hbir" path="res://game/Dialogic/shopping_cutscene.gd" id="1_iuxlb"]
+
+[node name="Shopping Cutscene" type="Node" unique_id=213006108]
+script = ExtResource("1_iuxlb")
+
+[node name="Skip Cutscene Button" type="Button" parent="." unique_id=273497477]
+z_index = 3
+offset_left = 992.0
+offset_top = 592.0
+offset_right = 1136.0
+offset_bottom = 640.0
+text = "Skip"
+
+[connection signal="pressed" from="Skip Cutscene Button" to="." method="_on_skip_cutscene_button_pressed"]

@@ -1,0 +1,17 @@
+[style name="FAA Style"]
+[background arg="res://game/Dialogic/images/blank.png" fade="0.0"]
+audio music "res://game/audio/music/green-rain.ogg" [loop="true"]
+narrator: After successfully managing to pay off the first installment, Bean makes his walk back home to recuperate for tomorrow.
+shopkeeper: Hey you! I saw what you were doing out at the lake!
+[background arg="res://game/Dialogic/images/meetshopkeeper.png" fade="0.5" wait="true"]
+shopkeeper: Y'see, I run a little shop back in the village, and we're sorta behind on business soooo...
+narrator: Spending the money that he needed to pay off his debt would be stupid, so Bean was about to ditch this bird and go home.
+shopkeeper: Listen buddy, unless you want to be throwing yourself at the fish once you run out of ammo, you'll need to find someone that can hook you up.
+shopkeeper: And let's just say that I run a little arms dealing business on the side.
+shopkeeper: So let's make a deal. I'll help you out by supplying you and you can buy other helpful items from my shop.
+shopkeeper: In exchange... [pause=0.5]you'll give me money.
+narrator: The catch was obvious. The shopkeeper penguin's greed was practically seeping off from them.
+shopkeeper: Oh come on, you gotta spend some money to make some money. Haven't ya heard of investing?
+narrator: Bean relented, he'd rather not repeat his previous failings.
+narrator: And so, the two run over to the shop.
+do GameController.go_to_shop()

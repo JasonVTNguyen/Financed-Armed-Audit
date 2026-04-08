@@ -31,7 +31,7 @@ func _ready() -> void:
 		spawn_fish()
 	GameController.fishing_qte_score = 0
 	is_qte = false
-	if GameController.tutorial_on:
+	if GameController.tutorial_on == GameController.TutorialState.FISHING:
 		add_child(tutorial.instantiate())
 	
 func _process(delta: float) -> void:
@@ -108,3 +108,7 @@ func auto_scientific(number : float) -> String:
 	elif tens >= 6:
 		return str(number/1000000.0) + "M"
 	return str(number)
+
+
+func _on_skip_to_results_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://game/scenes/results/results_screen.tscn")

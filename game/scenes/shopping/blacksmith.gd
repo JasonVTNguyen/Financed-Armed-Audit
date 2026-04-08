@@ -31,17 +31,22 @@ func _on_buy_ammo_button_pressed() -> void:
 			GameController.primary_gun.add_to_ammo_capacity(GameController.primary_gun.ammo_purchase_amt)
 			GameController.money -= GameController.primary_gun.ammo_price
 			$"Buy SFX".show()
+		else:
+			shopkeeper_dialogue("Listen, I get it, you're broke. But if you can't even afford to buy ammo, then you really need to start going after the big fish.","talking","idle")
+			await get_tree().create_timer(3).timeout
+			is_talking = false
 	else:
 		buy_ammo_panel.show()
 		
 	update_labels()
 
 func update_labels() -> void:
-	panel.hide()
-	money.text = "Cash: $%.2f" % GameController.money
-	description_text.text = ""
-	description_name.text = ""
-	description_text.visible_characters = -1
+	if not is_talking:
+		panel.hide()
+		money.text = "Cash: $%.2f" % GameController.money
+		description_text.text = ""
+		description_name.text = ""
+		description_text.visible_characters = -1
 
 func _on_buy_weapon_button_pressed() -> void:
 	if GameController.money >= shopping_menu.for_sale_weapon.price:
@@ -72,11 +77,11 @@ func _on_buy_weapon_button_mouse_exited() -> void:
 func _on_buy_ammo_button_mouse_entered() -> void:
 	panel.show()
 	description_name.text = ""
-	description_text.text = "Primary Gun: %s Current Ammo: %d\nAmmo is purchasable: $%.2f for %d bullets." % [GameController.primary_gun.gun_name, GameController.primary_gun.max_ammo, GameController.primary_gun.ammo_price, GameController.primary_gun.ammo_purchase_amt]
-	if GameController.secondary_gun:
-		description_text.text += "\nSecondary Gun: %s Current Ammo: %d\nAmmo is purchasable: $%.2f for %d bullets." % [GameController.secondary_gun.gun_name, GameController.secondary_gun.max_ammo, GameController.secondary_gun.ammo_price, GameController.secondary_gun.ammo_purchase_amt]
+	description_text.text = "Buy Ammunition for your gun."
+	
 func _on_buy_ammo_button_mouse_exited() -> void:
-	panel.hide()
+	if not is_talking:
+		panel.hide()
 
 func shopkeeper_dialogue(text : String, expression_talking : String, expression_idle : String) -> void:
 	is_talking = true
@@ -89,7 +94,6 @@ func shopkeeper_dialogue(text : String, expression_talking : String, expression_
 		await get_tree().create_timer(0.01).timeout
 	$Shopkeeper.play(expression_idle)
 	await get_tree().create_timer(2.5).timeout
-	is_talking = false
 	update_labels()
 
 
@@ -97,4 +101,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event.is_action("Select"):
 		if not is_talking:
 			update_labels()
-			shopkeeper_dialogue("Test Dialogue","talking", "idle")
+			shopkeeper_dialogue("Huh? Why do I call this a 'blacksmith' when it's just the area behind the counter? Trade secret.","talking", "idle")
+			await get_tree().create_timer(2.5).timeout
+			is_talking = false

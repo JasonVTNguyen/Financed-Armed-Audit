@@ -1,0 +1,6 @@
+[style name="FAA Style"]
+[background arg="res://game/Dialogic/images/blank.png" fade="0.0"]
+narrator: Unfortunately, because Bean was unable to pay the installment, he was sent to prison for tax evasion.
+[background arg="res://game/Dialogic/images/gameover.png" fade="0.5" wait="true"]
+[wait time="25.0" skippable="true"]
+do GameController.go_to_main_menu()

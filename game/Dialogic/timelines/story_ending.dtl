@@ -1,0 +1,9 @@
+[style name="FAA Style"]
+[background arg="res://game/Dialogic/images/mayorhappi.png" fade="0.0" wait="true"]
+mayor: Well, would you look at that Bean! By some miracle you managed to pay off several years of unpaid taxes!
+mayor: Congratulations, Bean. Now you can head back outside a new, tax-paying bird.
+mayor: Be sure to be on time next year!
+narrator: And with that, free from a tax burden. Bean takes a walk, deciding to visit his grandfather in the tropic isles.
+[background arg="res://game/Dialogic/images/goodend.png" fade="0.5" wait="true"]
+[wait time="25.0" skippable="true"]
+do GameController.go_to_main_menu()

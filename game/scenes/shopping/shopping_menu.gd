@@ -1,5 +1,7 @@
 extends Control
 
+var tutorial : PackedScene = preload("res://game/scenes/tutorials/tutorial_manager.tscn")
+
 var for_sale_weapon : Gun
 var for_sale_item1 : Item
 var item1_price : float
@@ -18,6 +20,12 @@ var has_bought_something : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	if GameController.tutorial_on == GameController.TutorialState.SHOPPING:
+		var shoptutorial = tutorial.instantiate()
+		add_child(shoptutorial)
+		shoptutorial.set_tutorial_deck("ShoppingTutorial")
+	
 	blacksmith.hide()
 	inventory.hide()
 	for_sale_weapon = Catalogue.weapons.get(randi_range(0,len(Catalogue.weapons)-1))
@@ -68,3 +76,6 @@ func check_buyables() -> void:
 		buyable_rod = Catalogue.rods.get(2)
 	else:
 		buyable_rod = null
+
+func randomize_shopkeeper_dialogue():
+	pass

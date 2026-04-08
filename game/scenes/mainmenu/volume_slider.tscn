@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://3xvgpoy6a72t"]
+
+[ext_resource type="Script" uid="uid://danoc8m0afvgu" path="res://game/scenes/mainmenu/volume_slider.gd" id="1_l331d"]
+
+[node name="Volume Slider" type="HSlider" unique_id=1481902988]
+offset_left = 365.0
+offset_top = 424.0
+offset_right = 804.0
+offset_bottom = 440.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_l331d")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

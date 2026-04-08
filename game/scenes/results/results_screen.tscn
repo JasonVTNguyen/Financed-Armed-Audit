@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dp8lw1vlig7yk"]
 
 [ext_resource type="Script" uid="uid://bbaylb5bpyalm" path="res://game/scenes/results/results_screen.gd" id="1_1bm6t"]
+[ext_resource type="AudioStream" uid="uid://d0e0ai3i5kyab" path="res://game/audio/music/fatbunny-corporate-loop-491884.ogg" id="2_1p5oo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1bm6t"]
 font_size = 52
@@ -57,5 +58,9 @@ offset_bottom = 549.0
 text = "Total"
 label_settings = SubResource("LabelSettings_xmibq")
 horizontal_alignment = 2
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=375890299]
+stream = ExtResource("2_1p5oo")
+volume_db = -15.0
 
 [connection signal="pressed" from="Continue Button" to="." method="_on_continue_button_pressed"]

@@ -35,7 +35,7 @@ layout_mode = 1
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=924920734]
 stream = ExtResource("5_b6u2u")
-volume_db = -32.5
+volume_db = -12.5
 autoplay = true
 bus = &"Music"
 

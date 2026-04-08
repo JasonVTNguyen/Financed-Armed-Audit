@@ -36,8 +36,9 @@ func _on_secondary_ammo_button_pressed() -> void:
 func update_buttons() -> void:
 	primary_gun_name.text = GameController.primary_gun.gun_name
 	primary_ammo.text = "Magazine: %d / %d | Capacity: %d" % [GameController.primary_gun.cur_ammo, GameController.primary_gun.mag_size, GameController.primary_gun.max_ammo]
-	secondary_gun_name.text = GameController.secondary_gun.gun_name
-	secondary_ammo.text = "Magazine: %d / %d | Capacity: %d" % [GameController.secondary_gun.cur_ammo, GameController.secondary_gun.mag_size, GameController.secondary_gun.max_ammo]
+	if GameController.secondary_gun:
+		secondary_gun_name.text = GameController.secondary_gun.gun_name
+		secondary_ammo.text = "Magazine: %d / %d | Capacity: %d" % [GameController.secondary_gun.cur_ammo, GameController.secondary_gun.mag_size, GameController.secondary_gun.max_ammo]
 
 func clear_description() -> void:
 	description.text = ""

@@ -2,6 +2,8 @@ extends Node
 
 @onready var screen_size = get_viewport().get_visible_rect().size
 
+enum TutorialState {FISHING, SHOPPING, DONE}
+
 var inventory : Inventory = Inventory.new()
 var currentFish : Fish
 var total_value : float = 0.0
@@ -12,7 +14,7 @@ var rounds_fish_caught : Array[Fish] = []
 var money_at_beginning : float = 0.0
 var number_of_shots : int = 0
 var fishing_qte_score : float
-var tutorial_on : bool = true
+var tutorial_on : TutorialState = TutorialState.FISHING
 
 var current_bait : int = 3
 var primary_gun : Gun
@@ -50,24 +52,30 @@ func reset_game():
 	inventory = Inventory.new()
 	currentFish = Fish.new()
 	total_value = 0.0
-	money = 9990.0
+	money = 0.0
 	total_bait = 3
 	current_bait = 3
 	current_round = 0
 	primary_gun = Catalogue.weapons.get(0)
 	primary_gun_upgrades = []
-	secondary_gun = Catalogue.weapons.get(1)
+	#secondary_gun = Catalogue.weapons.get(1)
 	secondary_gun_upgrades = []
 	current_hook = Catalogue.hooks.get(0)
 	current_rod = Catalogue.rods.get(0)
 	rounds_fish_caught = []
 	money_at_beginning = 0.0
 	number_of_shots = 0
-	tutorial_on = true
+	tutorial_on = TutorialState.FISHING
 	
 func start_game():
 	reset_game()
 	get_tree().change_scene_to_file("res://game/scenes/fishing/fishing.tscn")
+
+func go_to_shop():
+	get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
+
+func go_to_main_menu():
+	get_tree().change_scene_to_file("res://game/scenes/mainmenu/main_menu.tscn")
 
 func play_bgm(bgm):
 	$"BGM Test".play()

@@ -1,5 +1,5 @@
 extends Control
-
+@onready var menu_button: OptionButton = $HSplitContainer/MenuButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,9 +8,9 @@ func _ready() -> void:
 func update_labels() -> void:
 	match DisplayServer.window_get_mode():
 		DisplayServer.WINDOW_MODE_FULLSCREEN:
-			$MenuButton.select(0)
+			menu_button.select(0)
 		DisplayServer.WINDOW_MODE_WINDOWED:
-			$MenuButton.select(1)
+			menu_button.select(1)
 
 func _on_menu_button_item_selected(index: int) -> void:
 	match index:

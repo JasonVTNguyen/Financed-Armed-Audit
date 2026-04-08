@@ -3,11 +3,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$BGM.play()
 	var total : float
 	var beginning = Caught_Fish.new_fish("Beginning Balance", GameController.money_at_beginning)
 	$Panel/VBoxContainer.add_child(beginning)
 	beginning.update_labels()
-	
+	await get_tree().create_timer(0.75).timeout
 	for fish in GameController.rounds_fish_caught:
 		total += fish.value
 		var caught = Caught_Fish.new_fish(fish.fish_name, fish.value)
@@ -29,7 +30,12 @@ func _on_continue_button_pressed() -> void:
 		print("Value Exceeded.")
 		GameController.money -= GameController.story_round_objectives.get(GameController.current_round)
 		GameController.current_round += 1
-		get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
+		if GameController.current_round > 9:
+			get_tree().change_scene_to_file("res://game/Dialogic/story_ending.tscn")
+		if GameController.tutorial_on == GameController.TutorialState.SHOPPING:
+			get_tree().change_scene_to_file("res://game/Dialogic/shopping_cutscene.tscn")
+		else:
+			get_tree().change_scene_to_file("res://game/scenes/shopping/shopping_menu.tscn")
 	else:
 		print("Game Over")
-		get_tree().change_scene_to_file("res://game/scenes/mainmenu/main_menu.tscn")
+		get_tree().change_scene_to_file("res://game/Dialogic/game_over_cutscene.tscn")

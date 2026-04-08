@@ -4,7 +4,7 @@ var items : Dictionary[int, Item] = {
 	0 : Item.new("Test Item", "SHOOTING", "This is a test item.", "This item adds 8 flat damage to all weapons", 50.0, 8, 1.0, "", ""),
 	1 : Item.new("Test Function Item", "SHOOTING", "This items tests the function system.", "This item add 2 damage for each bait the player has total.", 100.0, 2, 1.0, "bait_multiplier", ""),
 	2 : Item.new("Critical Strike", "SHOOTING", "This is a critical hit item", "Every 3rd Bullet does 2x damage.",150.0, 0, 1.0, "", "shot_based", 3.0, 2.0),
-	3 : Item.new("Golden Feed", "FISHING", "Feed but gold.", "Every caught fish's value will go up by 30%.", 50.0, 0, 0.3, "", "")
+	3 : Item.new("Golden Feed", "FISHING", "Feed but gold.", "Every caught fish's value will go up by 30%.", 50.0, 0, 1.3, "", "")
 }
 
 var weapons : Dictionary[int, Gun] = {

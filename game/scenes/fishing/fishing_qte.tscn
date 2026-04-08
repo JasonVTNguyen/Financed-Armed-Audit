@@ -81,6 +81,5 @@ text = "Test Button"
 
 [node name="Reeling SFX" type="AudioStreamPlayer" parent="." unique_id=1620821068]
 stream = ExtResource("2_yxlp2")
-volume_db = -25.0
 
 [connection signal="pressed" from="Test Button" to="." method="_on_test_button_pressed"]

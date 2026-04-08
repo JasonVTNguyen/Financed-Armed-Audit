@@ -173,7 +173,6 @@ layout_mode = 1
 
 [node name="Buy SFX" type="AudioStreamPlayer" parent="." unique_id=778853024]
 stream = ExtResource("11_8fr72")
-volume_db = -25.0
 bus = &"SFX"
 
 [connection signal="pressed" from="To Shop Button" to="." method="_on_to_shop_button_pressed"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c4tpkl2qsh0ou"]
+
+[ext_resource type="Script" uid="uid://bvltx11iba3ym" path="res://game/Dialogic/story_ending.gd" id="1_gefeh"]
+
+[node name="Story Ending" type="Node" unique_id=2066249750]
+script = ExtResource("1_gefeh")

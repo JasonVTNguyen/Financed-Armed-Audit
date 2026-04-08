@@ -28,6 +28,7 @@ var hold_timer : float = 0
 func _ready() -> void:
 	print("Shooting Test: "+ str(GameController.currentFish))
 	$WaterSFX.play()
+	$BGM.play()
 	new_target = Target_Fish.new(GameController.currentFish.health, "res://game/sprites/fishing/Fish/fish.png")
 	$"Target Fish".change_sprite("res://game/sprites/fishing/Fish/fish.png")
 

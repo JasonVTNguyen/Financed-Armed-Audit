@@ -75,3 +75,17 @@ func clear_description_label() -> void:
 	description_label.text = ""
 	name_label.text = ""
 	item_icon.hide()
+
+
+func _on_rod_hb_mouse_entered() -> void:
+	description_label.text = "Tier: %d" % GameController.current_rod.rod_tier
+	name_label.text = str(GameController.current_rod.rod_name)
+	item_icon.texture = load("res://game/sprites/fishingrodicon.png")
+	item_icon.show()
+
+
+func _on_hook_hb_mouse_entered() -> void:
+	description_label.text = "Base Damage: %d" % GameController.current_hook.hook_damage
+	name_label.text = str(GameController.current_hook.hook_name)
+	item_icon.texture = load("res://game/sprites/hookicon.png")
+	item_icon.show()

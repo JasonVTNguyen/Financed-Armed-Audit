@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://uyda72f3drfj" path="res://game/audio/sfx/gun_switch.mp3" id="9_t1r6i"]
 [ext_resource type="AudioStream" uid="uid://cm8bdm3m5c2jf" path="res://game/audio/sfx/gun_shot.mp3" id="10_5p8rd"]
 [ext_resource type="AudioStream" uid="uid://bc48qaljeil0w" path="res://game/audio/sfx/water_splash.mp3" id="11_acajf"]
+[ext_resource type="AudioStream" uid="uid://ln4avoyicruf" path="res://game/audio/music/ステルス.ogg" id="12_annq1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wif6"]
 bg_color = Color(0.9999997, 0.16517359, 0.1934779, 1)
@@ -195,21 +196,22 @@ scale_amount_max = 0.1
 
 [node name="ReloadSFX" type="AudioStreamPlayer" parent="." unique_id=657923101]
 stream = ExtResource("8_fgfyv")
-volume_db = -35.0
 bus = &"SFX"
 
 [node name="SwitchSFX" type="AudioStreamPlayer" parent="." unique_id=831040363]
 stream = ExtResource("9_t1r6i")
-volume_db = -17.5
 bus = &"SFX"
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="." unique_id=865795553]
 stream = ExtResource("10_5p8rd")
-volume_db = -25.0
 bus = &"SFX"
 
 [node name="WaterSFX" type="AudioStreamPlayer" parent="." unique_id=1556424745]
 stream = ExtResource("11_acajf")
-volume_db = -25.0
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1858724076]
+stream = ExtResource("12_annq1")
+volume_db = -10.0
+bus = &"Music"
 
 [connection signal="area_entered" from="Boundaries/Boundary Areas" to="Target Fish" method="_on_boundary_areas_area_entered"]

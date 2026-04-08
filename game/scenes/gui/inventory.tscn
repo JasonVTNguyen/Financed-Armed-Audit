@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dr5ykvpx7yvvd" path="res://game/scenes/shopping/inventory.gd" id="1_jfhyk"]
 [ext_resource type="Texture2D" uid="uid://bx7tb8i7loedq" path="res://game/sprites/shopkeeper/shop/baiticon.png" id="2_3qhed"]
+[ext_resource type="Texture2D" uid="uid://ceyix811kjout" path="res://game/sprites/fishingrodicon.png" id="2_wllfo"]
+[ext_resource type="Texture2D" uid="uid://dwmo012vf87c0" path="res://game/sprites/hookicon.png" id="3_jtw1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keejj"]
 bg_color = Color(0.11489678, 0.11489683, 0.11489671, 1)
@@ -19,6 +21,12 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_keejj"]
 font_size = 12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qe58"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02y1k"]
+size = Vector2(109.714294, 128)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfhyk"]
 bg_color = Color(0.38039216, 0.6862745, 0.3019608, 0.49411765)
@@ -69,33 +77,60 @@ offset_left = 8.0
 offset_top = 176.0
 offset_right = 136.0
 offset_bottom = 368.0
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jtw1s")
 
 [node name="Current Rod" type="Label" parent="Panel/Fishing Stuff" unique_id=964994537]
 layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
 offset_right = 128.0
-offset_bottom = 48.0
+offset_bottom = 56.0
 text = "Rod"
+vertical_alignment = 1
 
 [node name="Bait Count" type="Label" parent="Panel/Fishing Stuff" unique_id=352399935]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 144.0
+offset_top = 134.0
 offset_right = 128.0
-offset_bottom = 192.0
+offset_bottom = 182.0
 text = "Bait"
 label_settings = SubResource("LabelSettings_keejj")
 vertical_alignment = 1
 
+[node name="Rod" type="Sprite2D" parent="Panel/Fishing Stuff" unique_id=495170176]
+position = Vector2(96, 32)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_wllfo")
+
+[node name="RodHB" type="Area2D" parent="Panel/Fishing Stuff/Rod" unique_id=1305749871]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Fishing Stuff/Rod/RodHB" unique_id=252868577]
+shape = SubResource("RectangleShape2D_0qe58")
+
+[node name="Hook" type="Sprite2D" parent="Panel/Fishing Stuff" unique_id=1888305186]
+position = Vector2(96, 96)
+scale = Vector2(0.4375, 0.375)
+texture = ExtResource("3_jtw1s")
+
+[node name="HookHB" type="Area2D" parent="Panel/Fishing Stuff/Hook" unique_id=904452903]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Fishing Stuff/Hook/HookHB" unique_id=449455890]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_02y1k")
+
 [node name="Current Hook" type="Label" parent="Panel/Fishing Stuff" unique_id=1332163888]
 layout_mode = 0
-offset_top = 96.0
+offset_left = 8.0
+offset_top = 72.0
 offset_right = 128.0
-offset_bottom = 144.0
+offset_bottom = 120.0
 text = "Hook"
+vertical_alignment = 1
 
 [node name="Baiticon" type="Sprite2D" parent="Panel/Fishing Stuff" unique_id=1497545278]
-position = Vector2(17.999992, 167.00003)
+position = Vector2(17.999992, 157.00006)
 scale = Vector2(0.3125, 0.35714287)
 texture = ExtResource("2_3qhed")
 
@@ -185,6 +220,10 @@ offset_right = 640.0
 offset_bottom = 264.0
 text = "Close"
 
+[connection signal="mouse_entered" from="Panel/Fishing Stuff/Rod/RodHB" to="." method="_on_rod_hb_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Fishing Stuff/Rod/RodHB" to="." method="clear_description_label"]
+[connection signal="mouse_entered" from="Panel/Fishing Stuff/Hook/HookHB" to="." method="_on_hook_hb_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Fishing Stuff/Hook/HookHB" to="." method="clear_description_label"]
 [connection signal="mouse_entered" from="Panel/Primary Weapon Box" to="." method="_on_primary_weapon_box_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/Primary Weapon Box" to="." method="clear_description_label"]
 [connection signal="mouse_entered" from="Panel/Secondary Weapon Box" to="." method="_on_secondary_weapon_box_mouse_entered"]

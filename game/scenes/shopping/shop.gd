@@ -71,6 +71,8 @@ func _on_buy_bait_button_pressed() -> void:
 		item_name.text = ""
 		shopkeeper_dialogue("Nice try, stupid. Bring enough money next time.","talking-mad","idle-mad")
 		function_description.text = ""
+		await get_tree().create_timer(2.5).timeout
+		is_talking = false
 	update_values()
 
 func buy_item_function(item : Item, cost : float) -> bool:
@@ -80,17 +82,21 @@ func buy_item_function(item : Item, cost : float) -> bool:
 		update_values()
 		shopkeeper_dialogue("Thank you for your purchase!","talking-normal","idle")
 		$"Buy SFX".play()
+		await get_tree().create_timer(2.5).timeout
+		is_talking = false
 		return true
 	else:
 		item_name.text = ""
 		shopkeeper_dialogue("Nice try, stupid. Bring enough money next time.","talking-mad","idle-mad")
 		function_description.text = ""
+		await get_tree().create_timer(2.5).timeout
+		is_talking = false
 		return false
 
 
 func update_values() -> void:
 	$Money.text = "Cash: $%.2f" % GameController.money
-	$"Start Next Round Button".text = "Next Installment\n$%.2f" % GameController.story_round_objectives.get(GameController.current_round)
+	$"Start Next Round Button".text = "Next Installment\nRequired: $%.2f" % GameController.story_round_objectives.get(GameController.current_round)
 	if not shopping_menu.buyable_rod and $"Upgrade Rod Button":
 		$"Upgrade Rod Button".queue_free()
 
@@ -114,7 +120,7 @@ func _on_buy_item_button_1_mouse_entered() -> void:
 		function_description.text = str(shopping_menu.for_sale_item1.function_text)
 
 func _on_buy_item_button_1_pressed() -> void:
-	if buy_item_function(shopping_menu.for_sale_item1, shopping_menu.item1_price):
+	if await buy_item_function(shopping_menu.for_sale_item1, shopping_menu.item1_price):
 		shopping_menu.has_bought_something = true
 		$"Buy Item Button 1".queue_free()
 
@@ -126,7 +132,7 @@ func _on_buy_item_button_2_mouse_entered() -> void:
 		function_description.text = str(shopping_menu.for_sale_item2.function_text)
 
 func _on_buy_item_button_2_pressed() -> void:
-	if buy_item_function(shopping_menu.for_sale_item2, shopping_menu.item2_price):
+	if await buy_item_function(shopping_menu.for_sale_item2, shopping_menu.item2_price):
 		shopping_menu.has_bought_something = true
 		$"Buy Item Button 2".queue_free()
 
@@ -138,7 +144,7 @@ func _on_buy_item_button_3_mouse_entered() -> void:
 		function_description.text = str(shopping_menu.for_sale_item3.function_text)
 
 func _on_buy_item_button_3_pressed() -> void:
-	if buy_item_function(shopping_menu.for_sale_item3, shopping_menu.item3_price):
+	if await buy_item_function(shopping_menu.for_sale_item3, shopping_menu.item3_price):
 		shopping_menu.has_bought_something = true
 		$"Buy Item Button 3".queue_free()
 
@@ -150,7 +156,7 @@ func _on_buy_item_button_4_mouse_entered() -> void:
 		function_description.text = str(shopping_menu.for_sale_item4.function_text)
 
 func _on_buy_item_button_4_pressed() -> void:
-	if buy_item_function(shopping_menu.for_sale_item4, shopping_menu.item4_price):
+	if await buy_item_function(shopping_menu.for_sale_item4, shopping_menu.item4_price):
 		shopping_menu.has_bought_something = true
 		$"Buy Item Button 4".queue_free()
 
@@ -167,6 +173,8 @@ func _on_upgrade_rod_button_pressed() -> void:
 	else:
 		item_name.text = ""
 		shopkeeper_dialogue("Nice try, stupid. Bring enough money next time.","talking-mad","idle-mad")
+		await get_tree().create_timer(2.5).timeout
+		is_talking = false
 		function_description.text = ""
 	update_values()
 
@@ -197,9 +205,9 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event.is_action("Select"):
 		if not is_talking:
 			clear_description()
-			shopkeeper_dialogue("Test Dialogue","talking-normal", "idle")
+			shopkeeper_dialogue("Hmm? Why don't you use some secondary currency to purchase items? Yeah, I'll stick with something real thank you.","talking-normal", "idle")
 			await get_tree().create_timer(2.5).timeout
-		
+			is_talking = false
 		
 
 func shopkeeper_dialogue(text : String, expression_talking : String, expression_idle : String) -> void:
@@ -215,5 +223,4 @@ func shopkeeper_dialogue(text : String, expression_talking : String, expression_
 		await get_tree().create_timer(0.01).timeout
 	$Shopkeeper.play(expression_idle)
 	await get_tree().create_timer(2.5).timeout
-	is_talking = false
 	clear_description()

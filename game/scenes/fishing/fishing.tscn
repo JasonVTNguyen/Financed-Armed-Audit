@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bx7tb8i7loedq" path="res://game/sprites/shopkeeper/shop/baiticon.png" id="6_f6nhs"]
 [ext_resource type="Script" uid="uid://7k0ss52vhvmq" path="res://game/scenes/fishing/fish_dictionary.gd" id="7_j3aex"]
 [ext_resource type="PackedScene" uid="uid://cnctdm4qoh7yt" path="res://game/scenes/gui/inventory.tscn" id="7_qbdcm"]
-[ext_resource type="AudioStream" uid="uid://chkwx53ttjeh" path="res://game/audio/music/くるくるバルーン.ogg" id="9_4pvs4"]
+[ext_resource type="AudioStream" uid="uid://bnkc0tlgh7vni" path="res://game/audio/music/くるくるバルーン.ogg" id="9_4pvs4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6nhs"]
 size = Vector2(1199, 222)
@@ -116,6 +116,13 @@ offset_right = 1129.0
 offset_bottom = 634.0
 text = "Skip to Shop"
 
+[node name="Skip to Results Button" type="Button" parent="." unique_id=880492130]
+offset_left = 959.0
+offset_top = 513.0
+offset_right = 1129.0
+offset_bottom = 570.0
+text = "Skip to Results"
+
 [node name="Test Fish Target" type="Sprite2D" parent="." unique_id=448097304]
 position = Vector2(-64, -71)
 scale = Vector2(0.25, 0.25)
@@ -134,10 +141,12 @@ z_index = 5
 
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1780456317]
 stream = ExtResource("9_4pvs4")
+volume_db = -15.0
 bus = &"Music"
 
 [connection signal="mouse_entered" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_entered"]
 [connection signal="mouse_exited" from="Lake Boundaries" to="." method="_on_lake_boundaries_mouse_exited"]
 [connection signal="pressed" from="Skip to Shop Button" to="." method="_on_skip_to_shop_button_pressed"]
+[connection signal="pressed" from="Skip to Results Button" to="." method="_on_skip_to_results_button_pressed"]
 [connection signal="pressed" from="Open Inventory Button" to="." method="_on_open_inventory_button_pressed"]
 [connection signal="close_inventory" from="Inventory" to="." method="_on_inventory_close_inventory"]
